@@ -27,7 +27,7 @@
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> About ergo-cms</a></h1>
 </div>
-<div class="s">
+<div class="s aboutpage">
 	<div class="c">
 		<div id="content">
 
@@ -43,26 +43,28 @@
 Then <a href="http://nodejs.org">node.js</a> came along and I found <a href="http://txstyle.org">Textile</a> and then ported it to node.js as quickly as my fingers could type. I think it took a few hours. <br />
 At one point I gave some notion to refactoring a lot of the code and got 99% of the way, but realised it was all spectacularly ill-designed. It wasn&#8217;t production ready, and my websites have limped along since then.<br />
 That code exists still, but is horrible and clunky and not extensible.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
-<p>Seeing the rise and rise of various static generators, I was dismayed to see them not satisfy the abovementioned points.<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup></p>
+<p>Seeing the rise and rise of various static generators, I was dismayed to see them not satisfy the above-mentioned points.<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup></p>
 <p>So, this project is the 4th generation of something that has never otherwise seen the light of day.</p>
-<p>This is what ergo-cms is:</p>
+<h2>What ergo-cms is</h2>
 <ul>
 	<li>A <em>very</em> lightweight cms. I was shocked to discover than an install of Ghost currently clocks in at around 185MB! Ergo doesn&#8217;t use <em>anyone</em> else&#8217;s fancy modules, unless it&#8217;s vital. Hence there&#8217;s no mustache, less, or any of that stuff here. (plugins for those will come, however).</li>
 	<li>Very extensible. If you like you <em>can</em> use mustache, or less, etc.</li>
 	<li>Database-less. It uses flat files. It natively supports Markdown (for those who haven&#8217;t seen the light), and Textile (for those that have). Being very extensible, it can support a whatever you can dream up.</li>
 	<li>Great at creating static websites.</li>
 	<li>Great at publishing minimal changes to your webserver (using rsync, or git)</li>
+	<li>Supportive of things Javascript. There will be plugins for heaps of native javascript solutions: less, jsuglify, etc.</li>
 </ul>
-<p>What ergo-cms isn&#8217;t:</p>
+<h2>What ergo-cms isn&#8217;t</h2>
 <ul>
-	<li>A Jekyll, WordPress, or <em>&lt;insert your cms name here&gt;</em> replacement.</li>
-	<li>A web server. Although there&#8217;s the ability to view your files in a locally hosted server (http:localhost:8181), it&#8217;s nothing more than a simple file server &amp; not production hardened. There&#8217;s no reason for such a thing, with a flat file generator.</li>
-	<li>Supportive of ruby-esque things. <span class="caps">YAML</span> is one of the most crazy things I&#8217;ve ever seen. But people like coffee script too. If you want to write a plugin for <em>&lt;insert your markup language here&gt;</em>, by all means, it&#8217;ll work nicely &#8211; but I won&#8217;t write it. I&#8217;m not a fan of fan-boi-itis. By supporting markdown, I believe supported enough of all of <em>that</em> kind of craziness, &amp; won&#8217;t go a step further&#8230; unless it&#8217;s LaTeX &#8212; I&#8217;ve heard good things with it. So, I might write a LateX plugin. I won&#8217;t write an scss plugin though (because it&#8217;s a ruby thing).</li>
+	<li>A Jekyll, WordPress, or <em>&lt;insert your cms name here&gt;</em> replacement. Each platform has it&#8217;s own idiosyncrasies, due to it&#8217;s own feature set. As such, there may be features in those other platforms that don&#8217;t match well here.</li>
+	<li>A web server. Although there&#8217;s the ability to view your files in a locally hosted server (http:localhost:8181), it&#8217;s nothing more than a simple file server &amp; it&#8217;s not production hardened. Since ergo-cms is a flat file generator, there&#8217;s no reason for such a thing.</li>
+	<li>Supportive of ruby-esque things. There&#8217;s a huge swell of support for things ruby, including it&#8217;s many offshoots, such as <span class="caps">YAML</span> or <span class="caps">SCSS</span>. To me though, it&#8217;s is one of the most crazy things I&#8217;ve ever seen emerge. If it requires <em>you</em> to tell <em>me</em> how good it is, and then get frustrated when I remain unconvinced, then it&#8217;s a sure sign, <em>you&#8217;re</em> suffering fan-boi-isms. I&#8217;ve seen lots of it.</li>
+	<li>Supportive of <em>&lt;flavour of the month markups&gt;</em>, or <em>&lt;too lazy to write a brace? use X&gt;</em>, like coffee script. It seems that people who love coffee script love ruby and have an aversion to commas and curly braces. If you want to write a plugin for <em>&lt;insert your markup language here&gt;</em>, by all means, it&#8217;ll work nicely &#8211; but I won&#8217;t write it. I&#8217;m not a fan of fan-boi-itis. By supporting markdown, I believe I&#8217;ve supported enough of all of <em>that</em> kind of craziness, &amp; won&#8217;t go a step further&#8230; unless it&#8217;s LaTeX &#8212; I&#8217;ve heard good things with it. So, I might write a LateX plugin.</li>
 </ul>
-<p>What it will (eventually) do:</p>
+<h2>What ergo-cms will (eventually) do</h2>
 <ol>
-	<li>Have two admin interfaces: one running on php that uses ergo-cli (ie, with node installed on the server), and another that uses express (or something) so that you can just serve it &#8211; as is.</li>
-	<li>Have an offline editor. This will be a &#8216;distraction free&#8217; app, with very minimal toys. It will probably run with <a href="http://electron.atom.io/">Electron</a> and be <em>beautiful</em> to behold (because sometimes you need to be inspired when writing, I&#8217;ve found). A mobile app will use <a href="http://cordova.apache.org/">Cordova</a> and/or a touch of <a href="http://ionicframework.com/">Ionic</a>.
+	<li>Have two admin interfaces: one running on php that uses ergo-cli (ie, with node installed on the server), and another that uses express (or something) so that you can just serve it &#8211; as is. As you can expect, they&#8217;ll be simple things.</li>
+	<li>Have an offline editor for both desktop and mobile. This will be a &#8216;distraction free&#8217; app, with very minimal toys. It will probably run with <a href="http://electron.atom.io/">Electron</a> and be <em>beautiful</em> to behold (because sometimes you need to be inspired when writing, I&#8217;ve found). A mobile app will use <a href="http://cordova.apache.org/">Cordova</a> and/or a touch of <a href="http://ionicframework.com/">Ionic</a> &#8212; probably &#8212; maybe.
 	<ul>
 		<li>They&#8217;ll require some comms extensions (<span class="caps">DAV</span>/<span class="caps">SFTP</span>/rsync/convoluted git hook/custom) to be figured out first.</li>
 	</ul></li>
@@ -72,14 +74,14 @@ That code exists still, but is horrible and clunky and not extensible.<sup class
 <p>So, there you have it. Ergo is yet another flat file cms static website generator, but is easy to use and has plans to have a proper admin interface and offline/mobile editor.</p>
 <hr />
 <p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I actually wrote it on a Galaxy Tab 2 7&#8243; while backpacking through Spain, on a rooted Android with a debian/xfce platform &amp; jacked in with a mini keyboard attachment. Fun times.</p>
-<p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a>  The continued use of ruby dismays me still. Ruby and I don&#8217;t get along. We never have. I tried. But I started with assembler (motorla/intel) and didn&#8217;t see the need for such a language. If you love it, great. I don&#8217;t, and I never will.</p>
+<p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a>  The continued use of ruby dismays me still. Ruby and I don&#8217;t get along. We never have. I tried. But I started with assembler (motorla/intel) and didn&#8217;t see the need for such a language. If you love it, great. I don&#8217;t, and I never will. Assembler doesn&#8217;t need hours of frustration to get started. Ruby, in my experience, does.</p>
 		</div>
 	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c">∴ ergo-cms is the official site for <a href="https://github.com/ergo-cms/">∴ ergo</a> - a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
 </div>
 
 </body>

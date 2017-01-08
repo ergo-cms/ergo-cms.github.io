@@ -92,7 +92,6 @@ body {
 #footer { background-color:#aaa;color:#222;margin-top: auto; font-family: "Lucida Console", Monaco, monospace}
 #footer .c {text-align:center; font-size:0.9em; padding:0.5em 0;}
 #footer { border-top:1px solid #888 }
-#content dt { margin-top: 0.5em;}
 
 
 .more {font-style:italic;}
@@ -100,5 +99,13 @@ body {
 
 pre { background-color:#ddd; padding:1em 1em; border:1px solid #ccc; white-space: pre-wrap; }
 code {background-color:#ddd; padding: 0.05em 0.4em; font-family: "Lucida Console", Monaco, monospace; font-size:0.8em;}
+pre>code { padding-left: 0;}
+
 #banner.home { min-height:12em;}
 #banner.home #title { font-size:4em; }
+
+.home #content dl { text-align:center;}
+.home #content dd { margin-left:0;}
+.home #content h1 a,h2 a,h3 a,h4 a{color:#822;}
+
+

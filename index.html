@@ -27,61 +27,37 @@
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Welcome</a></h1>
 </div>
-<div class="s">
+<div class="s home">
 	<div class="c">
 		<div id="content">
 
 
 <dl>
-	<dt><a href="https://translate.google.com/#la/en/Ergo%20scribo">Ergo scribo.</a></dt>
+	<dt>Ergo scribo.</dt>
 	<dd>Therefore, I Write.</dd>
-	<dt><a href="https://translate.google.com/#la/en/Scripsi.%20Ergo%2C%20est%20pulchra">Scripsi. Ergo, est pulchra.</a></dt>
+	<dt>Scripsi. Ergo, est pulchra.</dt>
 	<dd>I have written. Therefore, it is beautiful.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></dd>
 </dl>
 <p></p>
-<h1 style="text-align:center;margin-top:3em">ergo-cms is in it&#8217;s infancy and will be live soon. You are welcome to follow the code on <a href="https://github.com/ergo-cms/">github</a>.</h1>
+<h1 style="text-align:center;margin:3em auto">ergo-cms is in it&#8217;s infancy and will be live soon. You are welcome to follow the code on <a href="https://github.com/ergo-cms/">github</a>.</h1>
 <p>If you&#8217;re impatient, you can try playing with the skeleton file:</p>
+<pre><code>npm install ergo -g
+git clone https://github.com/ergo-cms/ergo-skel.git Blog
+cd Blog
+ergo build &amp;&amp; ergo view --watch</code></pre>
+<p>Don&#8217;t want to install globally? No problem:</p>
 <pre><code>git clone https://github.com/ergo-cms/ergo-skel.git Blog
 cd Blog
-npm install ergo -g
-ergo build &amp;&amp; ergo view -w</code></pre>
-<p style="margin-top:5em" class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Disclaimer: According to google translate</p>
-<!--
-h2. Getting Started
-
-* Install Ergo. (Ironically, this is optional)
-
-bc. npm install ergo-cli -g
-
-* Download a skeleton project from "https://github.com/ergo-cms/ergo-skel". Other skeletons will become available. Then change to that folder.
-
-OR, use @ergo-cli@ to download the basic skeleton for you:
-
-bc. ergo init Blog
-cd Blog
-
-* Start the local webserver, in 'watch' mode:
-
-bc. ergo view --watch
-
-* Open your browser to http://localhost:8181
-
-h2. Deploying
-
-When you're ready:
-
-bc. ergo deploy
-
-(You'll need to set some info in config.ergo.js first!)
-
--->
+npm install
+npm run build &amp;&amp; npm run view -- --watch</code></pre>
+<p style="margin-top:5em" class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> Disclaimer: According to <a href="https://translate.google.com/#la/en/Scripsi.%20Ergo%2C%20est%20pulchra">google translate</a></p>
 		</div>
 	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c">∴ ergo-cms is the official site for <a href="https://github.com/ergo-cms/">∴ ergo</a> - a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
 </div>
 
 </body>
