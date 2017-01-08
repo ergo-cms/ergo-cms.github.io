@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>ergo-cms articles</title>
+<description>Article feed for ergo-cms</description>
+<link>{site_url}</link>
+<atom:link href="{site_url}rss.xml" rel="self" type="application/rss+xml" />
+<ttl>720</ttl>
+{begin:article escape:true,count:10}<item>
+<link>{site_url}{uri}</link>
+<guid isPermaLink="{!:guid}false{else}true{end}">{!:guid}{uri}{else}{guid}{end}</guid>
+<pubDate>{date.rss}</pubDate>
+<title>{title}</title>
+<description>{!:metadesc}{content}{else}{metadesc}{end}</description>
+</item>
+{end:article}
+</channel>
+</rss>

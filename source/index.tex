@@ -1,0 +1,36 @@
+{
+title:"Welcome",
+metadesc: "This is a the home page for ergo, a beautiful cms",
+extracss: "home",
+layout:"homepage.html"
+}
+
+Ergo, I Write.
+
+h2. Getting Started
+
+* Install Ergo. (Ironically, this is optional)
+
+bc. npm install ergo-cli -g
+
+* Download a skeleton project from "https://github.com/ergo-cms/ergo-skel". Other skeletons will become available. Then change to that folder.
+
+OR, use @ergo-cli@ to download the basic skeleton for you:
+
+bc. ergo init Blog
+cd Blog
+
+* Start the local webserver, in 'watch' mode:
+
+bc. ergo view --watch
+
+* Open your browser to http://localhost:8181
+
+h2. Deploying
+
+When you're ready:
+
+bc. ergo deploy
+
+(You'll need to set some info in config.ergo.js first!)
+

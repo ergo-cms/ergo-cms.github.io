@@ -1,0 +1,40 @@
+{
+date:"2012-2-11 8:27",
+title:"About ergo-cms",
+metadesc: "An introduction on ergo-cms",
+metakeys: "about",
+extracss: "aboutpage",
+}
+
+Ergo was written, mainly to scratch an *itch*. I had been waiting for several years for Jekyll, Hyde, Ghost, etc, etc to make some realisations:
+
+* Not everybody likes markdown!
+* Where is a nice gui to do stuff?
+
+This project originally started as a C++ static website generator. It used markdown... but then I found "Textile":http://txstyle.org and then ported it to @node.js@ as quickly as my fingers could type. I think it took a few hours. At one point I gave some notion to refactoring a lot of the code and got 99% of the way, but it wasn't production ready. That code exists still, but is horrible and clunky and not extensible. 
+This project is the 4th generation of something that no-one else other than myself has seen.
+
+
+This is what ergo-cms is:
+
+* A *very* lightweight cms. I was shocked to discover than an install of Ghost currently clocks in at around 185MB! Ergo doesn't use *anyone* elses fancy modules, unless it's vital. Hence there's no mustache, less, or any of that stuff here. 
+* Very extensible. If you like you *can* use mustache, or less, etc.
+* Database-less. It uses flat files. It natively supports Markdown (for those who haven't seen the light), and Textile (for those that have). Being very extensible, it can support a whatever you can dream up.
+* Great at creating static websites. 
+* Great at publishing minimal changes to your webserver (using rsync)
+
+
+What ergo-cms isn't:
+
+* A Jekyll, WordPress, or <insert your cms name here> replacement.
+* A web server. Although there's the ability to view your files in a locally hosted server (http:localhost:8181), it's nothing more than a simple file server & not production hardened. There's no reason for such a thing, with a flat file generator.
+* Supportive of ruby-esque things. YAML is one of the most crazy things I've ever seen. But people like coffee script too. If you want to write a plugin, by all means, it'll work nicely here - but I won't write it. I'm not a fan of fan-boi-itis. By supporting markdown, I believe supported enough of all of _that_ kind of craziness, & won't go a step further!
+
+What it will (eventually) do:
+
+# Have two admin interfaces: one running on php that 'prods' a version of ergo-cli, and another that uses express (or something)
+# Have an offline editor. This will be a 'distraction free' app, with very minimal toys. It will probably run with electron and be _beautiful_ to behold (because sometimes you need to be inspired when writing, I've found).
+
+
+So, there you have it. Ergo is yet another flat file cms static website generator, but is easy to use and has plans to have a proper admin interface and offline editor.
+
