@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+ <loc>https://ergo-cms.github.io/</loc>
+ <changefreq>daily</changefreq>
+ <priority>1.0</priority>
+</url>
+<url>
+ <loc>https://ergo-cms.github.io/about.html</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+<url>
+ <loc>https://ergo-cms.github.io/blog.html</loc>
+ <changefreq>daily</changefreq>
+ <priority>1.0</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/about.html</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/err404.html</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/index.html</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/articles.html</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/robots.txt</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/rss.xml</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+<url>
+ <loc>https://ergo-cms.github.io/sitemap.xml</loc>
+ <changefreq>weekly</changefreq>
+ <priority>0.1</priority>
+</url>
+
+
+</urlset>

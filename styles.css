@@ -1,0 +1,102 @@
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, 
+sub, sup, tt, var, fieldset, form, label, legend,  table, caption, tbody, tfoot, thead, tr, th, td  
+	{ margin: 0; padding: 0; border: 0; outline: 0; }
+:focus { outline: 0; }
+table { border-collapse: separate; border-spacing: 0; }
+img { -ms-interpolation-mode: bicubic; }
+div,ul,li,a { box-sizing: border-box; ms-box-sizing: border-box; webkit-box-sizing: border-box; moz-box-sizing: border-box; }
+
+
+body,html { background-color:white;color:#333;height:100%;}
+body {
+	font-family: Georgia, serif;
+	font-size:11pt;
+	min-height:100%;
+}
+	
+a { text-decoration:none; color:#822}
+a:hover { text-decoration: underline;}
+a:visited {color:#822;}
+	
+p {line-height:1.6em;}
+#content p { }
+
+h1, h2, h3, h4  { font-family: serif; font-weight:normal;}
+h1{font-size:1.8em; }
+h2{font-size:1.5em; font-style:italic; }
+h3{font-size:1.2em; font-weight:bold;}
+h4{font-size:1.1em; }
+h1 a,h2 a,h3 a,h4 a{color:#333;}
+h1 a:visited,h2 a:visited,h3 a:visited,h4 a:visited{color:#333;}
+
+
+/* clearing */
+.c:before, .c:after { content: ""; display: table; } 
+.c:after { clear: both; } 
+.c { zoom: 1;} /* For IE 6/7 (trigger hasLayout) */
+.cleare,.clear {clear:both;} /* deprecated */
+
+.left { float:left }
+.right { float:right }
+
+.s {position:relative;} /* sectioning div */
+.c {margin:0 auto;width:80%;min-width:200px;max-width:1024px;} /* container div (inside s) */
+.c25 {float:left;width:24.5%;}
+.c33 {float:left;width:33%;}
+.c50 {float:left;width:49.5%;}
+.c66 {float:left;width:66%;}
+.c100 { }
+.cb {display:inline-box;} /*box container*/
+.pl {padding-left:0.5em;}
+.pr {padding-right:0.5em;}
+.tc { text-align:center}
+.tl { text-align:left}
+.tr { text-align:right}
+.tj { text-align:justify}
+
+
+
+#banner { background-color: #aaf;box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2); border-bottom: 1px solid #aaa; overflow:hidden; min-height:5em; }
+#banner #nav {text-align:left;position:absolute;}
+#banner #nav ul {margin:1.0em 0 0 0;padding:0;list-style:none;display:inline-block;}
+#banner #nav li {margin:0;padding:0;float:left;display:inline;}
+#banner #nav a{ color:#333; font-size:1em;font-weight:normal;padding:1.0em 1em;border-left:1px solid rgba(0,0,0,0.2);margin-left:-1px}
+#banner #nav a:hover{background-color:rgba(0,0,0,0.2);}
+#banner #title { position:absolute;bottom:0.2em;right:15%;display:inline;max-width:50%;text-align:right}
+#banner #title a { font-weight:normal;line-height:1em; padding:0.2em 0; text-shadow: 0.005em 0.005em .2em rgba(0,0,0,0.5);}
+#banner #title a:hover { color:#eee;text-decoration:none}
+
+
+
+
+body {
+	display: flex;
+  	flex-direction: column;
+}
+#content {
+  flex: 1;
+}
+
+#content { font-size:14.3pt; margin-top:2em;  margin-bottom:2em;}
+#content p {margin:0.8em 0; }
+#content img {padding:0 0.8em;}
+
+
+#content dt { margin-top: 0.5em;}
+#content dt:before {content:"\2022\20";} /* bullet & space */
+#content dd { font-style: italic; margin-bottom:0.4em;font-size:0.9em;}
+  
+#footer { background-color:#aaa;color:#222;margin-top: auto; font-family: "Lucida Console", Monaco, monospace}
+#footer .c {text-align:center; font-size:0.9em; padding:0.5em 0;}
+#footer { border-top:1px solid #888 }
+
+
+.more {font-style:italic;}
+.post { margin-top:2em; } /* used on lists of articles & blogs */
+
+pre { background-color:#ddd; padding:1em 1em; border:1px solid #ccc; white-space: pre-wrap; }
+code {background-color:#ddd; padding: 0.05em 0.4em; font-family: "Lucida Console", Monaco, monospace; font-size:0.8em;}
+#banner.home { min-height:12em;}
+#banner.home #title { font-size:4em; }

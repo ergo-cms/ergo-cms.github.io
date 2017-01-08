@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>ergo-cms articles</title>
+<description>Article feed for ergo-cms</description>
+<link>https://ergo-cms.github.io/</link>
+<atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
+<ttl>720</ttl>
+<item>
+<link>https://ergo-cms.github.io/articles/faq.html</link>
+<guid isPermaLink="false">articles/faq.html</guid>
+<pubDate>Fri, 22 Jun 2012 00:00:00 GMT</pubDate>
+<title>Frequently Asked Questions</title>
+<description>Get your answers here, in Frequently Asked Questions.</description>
+</item>
+
+</channel>
+</rss>
