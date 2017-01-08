@@ -30,6 +30,8 @@ h3{font-size:1.2em; font-weight:bold;}
 h4{font-size:1.1em; }
 h1 a,h2 a,h3 a,h4 a{color:#333;}
 h1 a:visited,h2 a:visited,h3 a:visited,h4 a:visited{color:#333;}
+hr { width:75%; margin: 2em auto; }
+.small { font-size: 0.8em;}
 
 
 /* clearing */
@@ -84,13 +86,13 @@ body {
 #content img {padding:0 0.8em;}
 
 
-#content dt { margin-top: 0.5em;}
-#content dt:before {content:"\2022\20";} /* bullet & space */
+#content dt { margin-top: 0.5em; font-weight:bold;}
 #content dd { font-style: italic; margin-bottom:0.4em;font-size:0.9em;}
   
 #footer { background-color:#aaa;color:#222;margin-top: auto; font-family: "Lucida Console", Monaco, monospace}
 #footer .c {text-align:center; font-size:0.9em; padding:0.5em 0;}
 #footer { border-top:1px solid #888 }
+#content dt { margin-top: 0.5em;}
 
 
 .more {font-style:italic;}

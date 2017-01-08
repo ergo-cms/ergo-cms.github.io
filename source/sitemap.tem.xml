@@ -11,22 +11,14 @@
  <priority>0.1</priority>
 </url>
 <url>
- <loc>{site_url}blog.html</loc>
+ <loc>{site_url}articles.html</loc>
  <changefreq>daily</changefreq>
  <priority>1.0</priority>
 </url>
-{begin:page escape:true}
-<url>
+{begin:article escape:true}<url>
  <loc>{site_url}{uri}</loc>
  <changefreq>weekly</changefreq>
  <priority>0.1</priority>
 </url>
-{end:page}
-{begin:blog escape:true}
-<url>
- <loc>{site_url}{uri}</loc>
- <changefreq>weekly</changefreq>
- <priority>0.1</priority>
-</url>
-{end:blog}
+{end:article}
 </urlset>
