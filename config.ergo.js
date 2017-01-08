@@ -3,8 +3,8 @@ This is a minimal skeleton config for ergo cms. See online for more options
 */
 
 module.exports = {
-	// out_path: "docs"
-	default_fields: {
+	  out_path: "../www"
+	, default_fields: {
 		  site_url: "https://ergo-cms.github.io/" 
 		, title: "ergo-cms ∴" // this goes in <title>tags generally, but also used in rss 
 	  }
