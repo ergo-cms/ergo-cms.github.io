@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Post Header Formats: Replacing YAML and JSON</title>
+<title>Replacing YAML and JSON with Something</title>
 <meta name="description" content="In search of a replacement for the YAML/JSON paradigm" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
@@ -26,16 +26,16 @@
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
-	<h1 id="title"><a href="#content"><b>∴</b> Post Header Formats: Replacing YAML and JSON</a></h1>
+	<h1 id="title"><a href="#content"><b>∴</b> Replacing YAML and JSON with Something</a></h1>
 </div>
 <div class="s post">
 <div class="c">
 <div id="content">
 
 
-<h1><a href="/blog/replacing-yaml-and-json.html">Post Header Formats: Replacing YAML and JSON</a></h1>
-<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world.</p>
-<h2 id="json">The illogical <span class="caps">JSON</span> and javascript objects</h2>
+<h1><a href="/blog/replacing-yaml-and-json.html">Replacing YAML and JSON with Something</a></h1>
+<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world, but perhaps you didn&#8217;t know it (nor care).</p>
+<h2 id="json">The illogical <span class="caps">JSON</span> and Javascript objects</h2>
 <p>In a fair world, <span class="caps">JSON</span> would never have been created.</p>
 <p>It sounds strange to read it, but it&#8217;s true. <span class="caps">JSON</span> was developed as a way of normalising what everyone in Javascript was doing anyway:</p>
 <pre><code>var someObject = {
@@ -50,10 +50,10 @@
 </ol>
 <p>This means that <span class="caps">JSON</span> is not human friendly and never will be human friendly. Why? It was decided to be machine readable and that&#8217;s it. There&#8217;s a project to try and alleviate the nonsense and it&#8217;s called <span class="caps">HJSON</span>, but it still suffers from similar problems, namely that it&#8217;s based around a Javascript Object Notation (without actually being valid <span class="caps">JSON</span>).</p>
 <h2 id="yaml">The illogical <span class="caps">YAML</span> and <span class="caps">JSON</span></h2>
-<p><span class="caps">YAML</span> had always said that it was a superset of <span class="caps">JSON</span>. They lied. It took may revisions of <span class="caps">YAML</span> to actually be able to properly work with any and all <span class="caps">JSON</span> notation.</p>
+<p><span class="caps">YAML</span> had always said that it was a superset of <span class="caps">JSON</span>. They lied. It took many revisions of <span class="caps">YAML</span> to actually be able to properly work with any and all <span class="caps">JSON</span> notation.</p>
 <p>Do you know what else is a superset of <span class="caps">JSON</span>? Javascript.</p>
 <p>That&#8217;s right. Javascript is a superset of <span class="caps">JSON</span>. So to me, the whole &#8216;YAML is a superset of <span class="caps">JSON</span>&#8216; experience is trite, to say the least.</p>
-<p>Then there&#8217;s also the fact that everyone who&#8217;s ever dealt with <span class="caps">YAML</span> <em>knows</em> they&#8217;re writing <span class="caps">YAML</span>. It&#8217;s supposed to be a friendly, human consumable markup. But if you&#8217;ve <em>ever</em> had to resort to a google search in order to find out that your <span class="caps">YAML</span> broke because of a few misplaced spaces proves another thing: <span class="caps">YAML</span> is a machine readable format first, human readable second. </p>
+<p>Then there&#8217;s also the fact that everyone who&#8217;s ever dealt with <span class="caps">YAML</span> <em>knows</em> they&#8217;re writing <span class="caps">YAML</span>. It&#8217;s supposed to be a friendly, human consumable markup. But if you&#8217;ve <em>ever</em> had to resort to a google search in order to find out why your <span class="caps">YAML</span> broke because of a few misplaced spaces proves another thing: <span class="caps">YAML</span> is a machine readable format first, human readable second, despite the rhetoric. </p>
 <p>To me, this means there are too many issues for <span class="caps">YAML</span> to be useful to anyone. Then there&#8217;s this last nail in the coffin:</p>
 <p><span class="caps">YAML</span> was born of ruby. </p>
 <p>When I discovered that, I became a staunch anti-zealot of <span class="caps">YAML</span>. That meant Jekyll and co. were forever and ever, <em><strong>never</strong></em> going to get my support. I have spent way too many hours wading through a ruby install to find that it breaks for one of a gajillion reasons that I was never interested in. If it works for you, great, but I&#8217;ve been burnt many times over the years. I now just avoid ruby like the plague that that I have always found it to be.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
@@ -63,7 +63,7 @@
 <p>Use of <span class="caps">INI</span> files is generally <em>fast</em>. Also, the Win32 api is pretty easy to use, so that you can have a massive .ini file and performance will be acceptable &#8212; even if you grabbed jsut one value at a time from the file.</p>
 <p>If only the ruby guys had&#8217;ve gone that way then I may not have given ruby up as a lost cause. (No more ruby bashing, I swear!)</p>
 <h2 id="multiline">The need for multiline text</h2>
-<p>All of the above formats are basically limited to one line of text per setting (although you <em>can</em> jump through hoops to get it to work). I feel that this is an important oversight when you consider a normal &#8216;home page&#8217; requirement. </p>
+<p>All of the above formats are basically limited to one line of text per setting (although you <em>can</em> jump through hoops to get it to work). I feel that this is an important oversight when you consider a normal &#8216;home page&#8217; requirement, or for something that requires a little more than just a hierarchical list of key/value pairs. </p>
 <p>Unlike a standard &#8216;blog post&#8217; page, the &#8216;home page&#8217; generally has a lot of discrete sections that are specific to the page, but all of which can contain their own content. Most cms systems (including my own), have reverted to the logical choice of using partials (which have also been called snippets, fragements or blocks). Unfortunately, this breaks up the experience of <em>&#8216;editing the home page&#8217;</em> because it involves a sequence of:</p>
 <ul>
 	<li>Find the right block.</li>
@@ -73,7 +73,7 @@
 </ul>
 <p>This is just inefficient and non creative. Ironically, the best in this sphere is WordPress which allows you to define new fields for post types. Unfortunately, I&#8217;m also not a fan of WordPress: I looked at WordPress in the 90&#8217;s (or thereabouts) and shook my head. It&#8217;s now 2017 and they <em>still</em> have wp-admin<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>. Enough said. </p>
 <h2 id="andf">A new dawn on a header format</h2>
-<p>I won&#8217;t call this a markup language, because that infers &#8216;machine readable&#8217;. But for the sake of kitsch<sup class="footnote" id="fnr3"><a href="#fn3">3</a></sup>, let&#8217;s call it &#8220;A New Dawn Format&#8221;, or <span class="caps">ANDF</span>. Here is the above Javascript object:</p>
+<p>I won&#8217;t call this a markup language, because that infers &#8216;machine readable&#8217;. But for the sake of kitsch<sup class="footnote" id="fnr3"><a href="#fn3">3</a></sup>, let&#8217;s call it &#8220;A New Dawn Format&#8221;, or <span class="caps">ANDF</span>. Here is the above Javascript object rendered in it:</p>
 <pre><code>title = This is my title
 date = {new Date();}
 uri = first-post.html</code></pre>
@@ -115,7 +115,7 @@ These are the projects I'm currently working on:
 [links.col3]
 This is a mini description that describes who I am and what I've done. See "About":about.html for more information
 </code></pre>
-<p>Isn&#8217;t this a whole lot easier to digest and understand? Note that the <code>markup_sections=*</code> is to explicitly mention what sections need marking up. Be default it will be everything, but sometimes you&#8217;d need something else.</p>
+<p>Isn&#8217;t this a whole lot easier to digest and understand? Note that the <code>markup_sections=*</code> is to explicitly mention what sections need marking up. Be default it will be everything, but sometimes you&#8217;d need something else. (Note also because of my unabashed bromance of Textile, that&#8217;s the markup I&#8217;ve used in this example).</p>
 <h2><span class="caps">ANDF</span> format (v1)</h2>
 <p>See here for <a href="/articles/andf-v1.html">the <span class="caps">ANDF</span> v1 format</a></p>
 <hr />

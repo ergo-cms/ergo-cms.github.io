@@ -7,87 +7,19 @@
 <atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
 <ttl>720</ttl>
 <item>
+<link>https://ergo-cms.github.io/blog/replacing-yaml-and-json.html</link>
+<guid isPermaLink="false">blog/replacing-yaml-and-json.html</guid>
+<pubDate>Sun, 08 Jan 2017 13:00:00 GMT</pubDate>
+<title>Replacing YAML and JSON with Something</title>
+<description>In search of a replacement for the YAML/JSON paradigm</description>
+</item>
+
+<item>
 <link>https://ergo-cms.github.io/articles/andf-v1.html</link>
 <guid isPermaLink="false">articles/andf-v1.html</guid>
-<pubDate>Mon, 09 Jan 2017 02:22:33 GMT</pubDate>
+<pubDate>Mon, 09 Jan 2017 02:40:47 GMT</pubDate>
 <title>ANDF v1.0 Spec [draft]</title>
-<description>&lt;p&gt;Here&amp;#8217;s a table of what I suggest for the &amp;#8216;A New Dawn Format&amp;#8217;, and what I&amp;#8217;ll be using for &lt;a href=&quot;https://ergo-cms.github.io&quot;&gt;ergo-cms&lt;/a&gt;. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there&amp;#8217;s a clear fault in it).&lt;/p&gt;
-&lt;p&gt;A Javascript implementation and this spec will be available at &lt;a href=&quot;https://github.com/cmroanirgo/andf&quot;&gt;https://github.com/cmroanirgo/andf&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;Specification&lt;/h2&gt;
-&lt;p&gt;In all cases &lt;code&gt;\n&lt;/code&gt; should be treated as &lt;code&gt;\r?\n&lt;/code&gt;, to be line-endings agnostic.&lt;/p&gt;
-&lt;p&gt;The use-case of this specification is to produce a hierarchical data structure similar to that of &lt;span class=&quot;caps&quot;&gt;JSON&lt;/span&gt;, or more specificially a Javascript object. Note however, that the format should be able to be searched for a value, just like an .INI file, without needing to decode and load the whole file.&lt;/p&gt;
-&lt;p&gt;Errors are to be expected in the file. They should &lt;em&gt;&lt;strong&gt;never&lt;/strong&gt;&lt;/em&gt; generate an assert in production code, but is acceptable behaviour in test cases only. So, a prime use-case is to feed the deocder absolute junk (eg an image file). It will return an object, with nothing in it. This is an &lt;em&gt;error last&lt;/em&gt; approach. It is up to the rest of the code to decide that an empty object is acceptable or not.&lt;/p&gt;
-&lt;h3&gt;Natural Names &amp;amp; Section Names&lt;/h3&gt;
-&lt;p&gt;We define a &lt;code&gt;natural-name&lt;/code&gt; as a regular expression: &lt;code&gt;[\w\-\.\/]*[\w]&lt;/code&gt;. This a normal word (a-zA-Z0-9 &amp;amp; _) &amp;amp; &amp;#8216;-&amp;#8217;, &amp;#8216;/&amp;#8217; &amp;amp; &amp;#8216;.&amp;#8217;, but generally not ending with the symbols (except _). These are valid:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;SomeKey&lt;/li&gt;
-	&lt;li&gt;Some__--..//key2&lt;/li&gt;
-	&lt;li&gt;../some/key_&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;These are &lt;span class=&quot;caps&quot;&gt;NOT&lt;/span&gt; valid:&lt;/p&gt;
-&lt;ul&gt;
-	&lt;li&gt;key/../&lt;/li&gt;
-	&lt;li&gt;#key&lt;/li&gt;
-	&lt;li&gt;key-&lt;/li&gt;
-	&lt;li&gt;some key&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A &lt;code&gt;section-name&lt;/code&gt; is the same as a &lt;code&gt;natural-name&lt;/code&gt; except that spaces are allowed when used in the &lt;code&gt;[section name]&lt;/code&gt; blocks. See below.&lt;/p&gt;
-&lt;h3&gt;Embeded Code&lt;/h3&gt;
-&lt;p&gt;The specification allows for code to be entered. The actual language of this code is up to the implementation, so a Perl implementation may render the code blocks as Perl. The Javascript implementation will render as Javascript and return a Javascript Object.&lt;/p&gt;
-&lt;h3&gt;The Rest&lt;/h3&gt;
-&lt;p&gt;Where &lt;code&gt;section&lt;/code&gt; is: &lt;code&gt;/\n\s*\[(natural-name)\]\s*(?:\n)/&lt;/code&gt;. &lt;code&gt;$1&lt;/code&gt; contains the section name. The one caveat is that a section name in &lt;code&gt;[ ]&lt;/code&gt; can also contain spaces.&lt;/p&gt;
-&lt;p&gt;Where &lt;code&gt;comment&lt;/code&gt; is: &lt;code&gt;/\n[#;].*?&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Where &lt;code&gt;key&lt;/code&gt; suits the regular expression: &lt;code&gt;/\n\s*(natural-name)\s*(?:\=\s*)/&lt;/code&gt;. That is, a natural-word start at or near the start of a new line, with an equals sign after it. There need &lt;span class=&quot;caps&quot;&gt;NOT&lt;/span&gt; be a value to the right of the equals. &lt;code&gt;$1&lt;/code&gt; contains the key&lt;/p&gt;
-&lt;p&gt;Where &lt;code&gt;line-starters&lt;/code&gt; is either a comment, key, or section: &lt;code&gt;/(?:comment|key|section)/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Where &lt;code&gt;code-value&lt;/code&gt; suits the regular expression: &lt;code&gt;/\=\s*(\{ (.*)?\})\s*$/&lt;/code&gt;. A code value continues to the end of a line. This may need ironing out a little more, to weigh security vs usability. This should always &lt;span class=&quot;caps&quot;&gt;ONLY&lt;/span&gt; be a single line match, to encourage simplicity. &lt;code&gt;$1&lt;/code&gt; contains the &amp;#8216;code&amp;#8217;.&lt;/p&gt;
-&lt;p&gt;Similarly, &lt;code&gt;value&lt;/code&gt; suits the regular expression: &lt;code&gt;/\=\s*([\s\S]*?)(?:line-starters|$)/&lt;/code&gt;. Matches all text until the next &amp;#8216;key =&amp;#8217;, [section], #comment, or end. &lt;code&gt;$1&lt;/code&gt; contains the value.&lt;/p&gt;
-&lt;p&gt;Where &lt;code&gt;default-value&lt;/code&gt; is: &lt;code&gt;/\s*([\s\S])*\s*(?:line-starters|$)/&lt;/code&gt;. Similar to &lt;code&gt;value&lt;/code&gt;, but without need for the &lt;code&gt;\=\s*&lt;/code&gt; at the start. &lt;code&gt;$1&lt;/code&gt; contains the value.&lt;/p&gt;
-&lt;p&gt;A &lt;code&gt;escaped-value-block&lt;/code&gt; suits the regular expression: &lt;code&gt;/-\s*\n([\s\S])*\s*\n(?:-|$)\s*/&lt;/code&gt;. A block with --- and --- surrounding it. &lt;code&gt;$1&lt;/code&gt; contains the value.&lt;/p&gt;
-&lt;pre style=&quot;min-width:860px&quot;&gt;&lt;code&gt;title = Welcome to my homepage                               ; key + value
-uri = index.html                                                        ; key + value
-date={   (new Date()).toString + &quot; OK&quot;; }                               ; key + code+value
-metakeys = Some keys,other keys                                         ; key + value
-metadesc =                                                              ; key + ...
-I like writing blogs and learning                                       ;     ... continues
-about myself. Trailing spaces are                                       ;     ... continue
-eaten                                                                   ;     ... value
-
-[section1]                                                              ; section
-content = This is the content for some magical 'section 1' that exists. ; key + ...
-It keeps going until another '[section]' is found (on it's own line),   ;     ... continues
-or a 'key=' is met. Having a newline above [section] is optional.       ;     ... value
-extracss = green                                                        ; key + value
-
-#This is a comment. It needs to start with a &quot;#&quot; or                     ; comment
-; a &quot;;&quot;                                                                 ; comment
-
-section2.content = Another sections, using 'dot' notation.              ; key + ...
-These are also valid: [section.sub.subsub], section.sub.subsub.key =    ;      ... value
-
-[main content]                                                          ; section
-extracss = orange                                                       ; key + value
-
-Each section can also have it's own text. It must have a blank line     ; default-value 
-above it, OR be directly beneath a [section] mark                       ; ...(for main.content)
-And keeps on going until a valid [section], #comment, [section] or 
-key= is reached.
-
-[footer content]
--------------                                        ; escaped-value-block, for 'footer content' default
-#This is footer content. This is NOT a comment
-;This is NOT a comment
-not-a-key = NOT a value
-
-All of this text is a 'default-value-block' (for footer.content). It is OK
-to forget the 3 dashes below, if the end of the file is reached.
----
-
-[final.footer]
-some.key =                                           ; key (+ an empty value)
----                                                  ; escaped-value-block, for 'final.footer' default
-This is the last block of text. 
-This is valid.
-&lt;/code&gt;&lt;/pre&gt;</description>
+<description>Specifications for A New Dawn Format, v1</description>
 </item>
 <item>
 <link>https://ergo-cms.github.io/articles/faq.html</link>
