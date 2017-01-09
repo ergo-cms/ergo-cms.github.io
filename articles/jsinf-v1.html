@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ANDF v1.0 Spec [draft]</title>
-<meta name="description" content="Specifications for A New Dawn Format, v1" />
+<title>JSINF v1.0 Spec [draft]</title>
+<meta name="description" content="Specifications for JSINF, a human readable configuration, v1" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
@@ -26,17 +26,17 @@
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
-	<h1 id="title"><a href="#content"><b>∴</b> ANDF v1.0 Spec [draft]</a></h1>
+	<h1 id="title"><a href="#content"><b>∴</b> JSINF v1.0 Spec [draft]</a></h1>
 </div>
 <div class="s ">
 <div class="c">
 <div id="content">
 
 
-<h1><a href="/articles/andf-v1.html">ANDF v1.0 Spec [draft]</a></h1>
-<p>Here&#8217;s a table of what I suggest for the &#8216;A New Dawn Format&#8217;, and what I&#8217;ll be using for <a href="https://ergo-cms.github.io">ergo-cms</a>. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there&#8217;s a clear fault in it).</p>
-<p>A Javascript implementation and this spec will be available at <a href="https://github.com/cmroanirgo/andf">https://github.com/cmroanirgo/andf</a>.</p>
-<h2>Specification</h2>
+<h1><a href="/articles/jsinf-v1.html">JSINF v1.0 Spec [draft]</a></h1>
+<p>Here&#8217;s a table of what I suggest for the <span class="caps">JSINF</span>, and what I&#8217;ll be using for <a href="https://ergo-cms.github.io">ergo-cms</a>. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there&#8217;s a clear fault in it).</p>
+<p>A Javascript implementation and this spec will be available at <a href="https://github.com/cmroanirgo/jsinf">https://github.com/cmroanirgo/jsinf</a>.</p>
+<h2>Specification [draft]</h2>
 <p>In all cases <code>\n</code> should be treated as <code>\r?\n</code>, to be line-endings agnostic.</p>
 <p>The use-case of this specification is to produce a hierarchical data structure similar to that of <span class="caps">JSON</span>, or more specificially a Javascript object. Note however, that the format should be able to be searched for a value, just like an .INI file, without needing to decode and load the whole file.</p>
 <p>Errors are to be expected in the file. They should <em><strong>never</strong></em> generate an assert in production code, but is acceptable behaviour in test cases only. So, a prime use-case is to feed the deocder absolute junk (eg an image file). It will return an object, with nothing in it. This is an <em>error last</em> approach. It is up to the rest of the code to decide that an empty object is acceptable or not.</p>
@@ -92,8 +92,8 @@ extracss = orange                                                       ; key + 
 
 Each section can also have it's own text. It must have a blank line     ; default-value 
 above it, OR be directly beneath a [section] mark                       ; ...(for main.content)
-And keeps on going until a valid [section], #comment, [section] or 
-key= is reached.
+And keeps on going until a valid [section], #comment, [section] or key=
+is reached.
 
 [footer content]
 -------------                                        ; escaped-value-block, for 'footer content' default
