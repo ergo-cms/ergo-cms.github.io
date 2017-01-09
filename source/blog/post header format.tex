@@ -1,0 +1,129 @@
+{
+	title: "Post Header Formats", 
+	date: "9 Jan 2017",
+	metadesc: "In search of a new format"
+}
+
+From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with YAML. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table.
+
+h2(#json). The illogical JSON and javascript objects
+
+In a fair world, JSON would never have been created.
+
+It sounds strange to read it, but it's true. JSON was developed as a way of normalising what everyone in Javascript was doing anyway:
+
+bc. var someObject = {
+	title: "My first post!",
+	date: new Date(), // I have a comment here
+	uri: "first-post.html",
+};
+
+Unfortunately, in the lacklustre definition of JSON, the above block fails for two reasons:
+
+# It has a comment. Believe it or not, JSON decided to omit comments. You can understand the reasoning, when the people who decided on the spec decided that they wanted to be able to do away with whitespace, presumably so that it can be transmitted more succinctly across networks: @{title:"My first post!",date:new Date(),uri:"first-post.html"}@
+# It has a trailing comma. Enough said.
+
+This means that JSON is not human friendly and never will be human friendly. Why? It was decided to be machine readable and that's it. There's a project to try and alleviate the nonsense and it's called HJSON, but it still suffers from similar problems, namely that it's based around a Javascript Object Notation (without actually being valid JSON).
+
+h2(#yaml). The illogical YAML and JSON
+
+YAML had always said that it was a superset of JSON. They lied. It took may revisions of YAML to actually be able to properly work with any and all JSON notation.
+
+Do you know what else is a superset of JSON? Javascript.
+
+That's right. Javascript is a superset of JSON. So to me, the whole 'YAML is a superset of JSON' experience is trite, to say the least.
+
+Then there's also the fact that everyone who's ever dealt with YAML _knows_ they're writing YAML. It's supposed to be a friendly, human consumable markup. But if you've _ever_ had to resort to a google search in order to find out that your YAML broke because of a few misplaced spaces proves another thing: YAML is a machine readable format first, human readable second. 
+
+To me, this means there are too many issues for YAML to be useful to anyone. Then there's this last nail in the coffin:
+
+YAML was born of ruby. 
+
+When I discovered that, I became a staunch anti-zealot of YAML. That meant Jekyll and co. were forever and ever, _*never*_ going to get my support. I have spent way too many hours wading through a ruby install to find that it breaks for one of a gajillion reasons that I was never interested in. If it works for you, great, but I've been burnt many times over the years. I now just avoid ruby like the plague that that I have always found it to be.[1]
+
+h2(#ini). INI files.
+
+It comes to mind that no one ever has really worried about an 'ini file' format. It's the one that's been quietly used for decades. You have come across it in php.ini, or .gitconfig, or any .ini file on a windblows box.
+
+
+To me this is the ideal 'human readable' format, because you can figure it out easily. Actually, it's so easy you don't even notice that there's anything to 'figure out'. It just makes sense. There are no quotes, spaces, or anything to really worry about. Each line is a setting. Settings can be grouped into sections, using [section name]. The spaces around a ' = ' are there for visual purposes because they get trimmed out. 
+
+If only the ruby guys had've gone that way then I may not have given ruby up as a lost cause. (No more ruby bashing, I swear!)
+
+h2(#multiline). The need for multiline text.
+
+All of the above formats are basically limited to one line of text per setting (although you _can_ jump through hoops to get it to work). I feel that this is an important oversight when you consider a normal 'home page' requirement. 
+
+Unlike a standard 'blog post' page, the 'home page' generally has a lot of discrete sections that are specific to the page, but all of which can contain their own content. Most cms systems (including my own), have reverted to the logical choice of using partials (which have also been called snippets, fragements or blocks). Unfortunately, this breaks up the experience of _'editing the home page'_ because it involves a sequence of:
+
+* Find the right block.
+* Edit the block.
+* Save the block.
+* Move onto the next block.
+
+This is just inefficient and non creative. Ironically, the best in this sphere is WordPress which allows you to define new fields for post types. Unfortunately, I'm also not a fan of WordPress: I looked at WordPress in the 90's (or thereabouts) and shook my head. It's now 2017 and they _still_ have wp-admin[2]. Enough said. 
+
+h2(#andf). A new dawn on a header format.
+
+I won't call this a markup language, because that infers 'machine readable'. But for the sake of kitch-iness, let's call it "A New Dawn Format", or ANDF. Here is the above Javascript object:
+
+bc.
+title = This is my title
+date = {new Date();}
+uri = first-post.html
+
+And here's a quick overview on what a 'home page' could look like:
+
+
+<pre><code>title = The Perfect Blog
+Author = Craig
+layout = homepage.html
+markup_sections=*
+[header]
+Welcome to the Perfect Blog
+
+[banner-section]
+carousel_images = '/images/pic1.jpg','/images/pic2.jpg'
+carousel_height=140px
+
+Here you can find some pretty cool features about this place
+
+[projects]
+These are the projects I'm currently working on:
+
+* "Project 1":proj1.html
+* "Project 2":proj2.html
+* "Project 3":proj3.html
+
+[links.col1]
+* "Link 1":link1.html
+* "Link 2":link2.html
+* "Link 3":link3.html
+
+
+[links.col2]
+* "Project 1":proj1.html
+* "Project 2":proj2.html
+* "Project 3":proj3.html
+* "Project 4":proj4.html
+* "Project 5":proj5.html
+
+
+[links.col3]
+This is a mini description that describes who I am and what I've done. See "About":about.html for more information
+</code></pre>
+
+Isn't this a whole lot easier to digest and understand? Note that the @markup_sections=*@ is to explicitly mention what sections need marking up. Be default it will be everything, but sometimes you'd need something else.
+
+h2. ANDF format (v1)
+
+See here for "the ANDF v1 format":/articles/andf-v1.html
+
+---------
+
+
+fn1(small). To be fair. I also bash Markdown just as much. It's *only* place in the world should in GitHub README's or super-ultra-boring-to-read automated documentation suites. I've never understood why it became so popular, easpecially since many were using WikiText before then. To me, WikiText is much easier to read. Except Textile, of course. I've seen the light wrt Textile. I <3 Textile. Too bad "GitHub has become evil and now hates Textile":https://github.com/blog/2115-upgrading-your-textile-posts-to-markdown, because they're on the 'I love Jekyll' boat, apparently. Whateva. This post was written in Textile and is posted on github pages. I win ;)
+
+fn2(small). WordPress has finally begun to address the issue with a new project. I'm tired of waiting for others to solve my issues, so here I am writing ergo-cms.
+
+

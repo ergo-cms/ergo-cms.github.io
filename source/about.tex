@@ -17,30 +17,33 @@ Then "node.js":http://nodejs.org came along and I found "Textile":http://txstyle
 At one point I gave some notion to refactoring a lot of the code and got 99% of the way, but realised it was all spectacularly ill-designed. It wasn't production ready, and my websites have limped along since then.
 That code exists still, but is horrible and clunky and not extensible.[1]
 
-Seeing the rise and rise of various static generators, I was dismayed to see them not satisfy the abovementioned points.[2]
+Seeing the rise and rise of various static generators, I was dismayed to see them not satisfy the above-mentioned points.[2]
 
 So, this project is the 4th generation of something that has never otherwise seen the light of day.
 
 
-This is what ergo-cms is:
+h2. What ergo-cms is
 
 * A _very_ lightweight cms. I was shocked to discover than an install of Ghost currently clocks in at around 185MB! Ergo doesn't use _anyone_ else's fancy modules, unless it's vital. Hence there's no mustache, less, or any of that stuff here. (plugins for those will come, however).
 * Very extensible. If you like you _can_ use mustache, or less, etc.
 * Database-less. It uses flat files. It natively supports Markdown (for those who haven't seen the light), and Textile (for those that have). Being very extensible, it can support a whatever you can dream up.
 * Great at creating static websites. 
 * Great at publishing minimal changes to your webserver (using rsync, or git)
+* Supportive of things Javascript. There will be plugins for heaps of native javascript solutions: less, jsuglify, etc.
+
+h2. What ergo-cms isn't
+
+* A Jekyll, WordPress, or _<insert your cms name here>_ replacement. Each platform has it's own idiosyncrasies, due to it's own feature set. As such, there may be features in those other platforms that don't match well here.
+* A web server. Although there's the ability to view your files in a locally hosted server (http:localhost:8181), it's nothing more than a simple file server & it's not production hardened. Since ergo-cms is a flat file generator, there's no reason for such a thing.
+* Supportive of ruby-esque things. There's a huge swell of support for things ruby, including it's many offshoots, such as YAML or SCSS. To me though, it's is one of the most crazy things I've ever seen emerge. If it requires _you_ to tell _me_ how good it is, and then get frustrated when I remain unconvinced, then it's a sure sign, _you're_ suffering fan-boi-isms. I've seen lots of it.
+* Supportive of _<flavour of the month markups>_, or _<too lazy to write a brace? use X>_, like coffee script. It seems that people who love coffee script love ruby and have an aversion to commas and curly braces. If you want to write a plugin for _<insert your markup language here>_, by all means, it'll work nicely - but I won't write it. I'm not a fan of fan-boi-itis. By supporting markdown, I believe I've supported enough of all of _that_ kind of craziness, & won't go a step further... unless it's LaTeX -- I've heard good things with it. So, I might write a LateX plugin. 
 
 
-What ergo-cms isn't:
 
-* A Jekyll, WordPress, or _<insert your cms name here>_ replacement.
-* A web server. Although there's the ability to view your files in a locally hosted server (http:localhost:8181), it's nothing more than a simple file server & not production hardened. There's no reason for such a thing, with a flat file generator.
-* Supportive of ruby-esque things. YAML is one of the most crazy things I've ever seen. But people like coffee script too. If you want to write a plugin for _<insert your markup language here>_, by all means, it'll work nicely - but I won't write it. I'm not a fan of fan-boi-itis. By supporting markdown, I believe supported enough of all of _that_ kind of craziness, & won't go a step further... unless it's LaTeX -- I've heard good things with it. So, I might write a LateX plugin. I won't write an scss plugin though (because it's a ruby thing).
+h2. What ergo-cms will (eventually) do
 
-What it will (eventually) do:
-
-# Have two admin interfaces: one running on php that uses ergo-cli (ie, with node installed on the server), and another that uses express (or something) so that you can just serve it - as is.
-# Have an offline editor. This will be a 'distraction free' app, with very minimal toys. It will probably run with "Electron":http://electron.atom.io/ and be _beautiful_ to behold (because sometimes you need to be inspired when writing, I've found). A mobile app will use "Cordova":http://cordova.apache.org/ and/or a touch of "Ionic":http://ionicframework.com/. 
+# Have two admin interfaces: one running on php that uses ergo-cli (ie, with node installed on the server), and another that uses express (or something) so that you can just serve it - as is. As you can expect, they'll be simple things.
+# Have an offline editor for both desktop and mobile. This will be a 'distraction free' app, with very minimal toys. It will probably run with "Electron":http://electron.atom.io/ and be _beautiful_ to behold (because sometimes you need to be inspired when writing, I've found). A mobile app will use "Cordova":http://cordova.apache.org/ and/or a touch of "Ionic":http://ionicframework.com/ -- probably -- maybe. 
 #* They'll require some comms extensions (DAV/SFTP/rsync/convoluted git hook/custom) to be figured out first.
 # Have a slew of plugins that can be downloaded and configured easily. I was thinking something a bit 'npm-ish', like: @ergo install plugin-name@. The actual mechanics of this will be ironed out later.
 # Have a Theme repository. n00bs love this stuff. Designers avoid them, except to sell them, of course ;). At the moment, I'll ship a few skeleton projects that should solve the 99% of websites. Hopefully.
@@ -52,7 +55,7 @@ So, there you have it. Ergo is yet another flat file cms static website generato
 
 fn1(small). I actually wrote it on a Galaxy Tab 2 7" while backpacking through Spain, on a rooted Android with a debian/xfce platform & jacked in with a mini keyboard attachment. Fun times.
 
-fn2(small).  The continued use of ruby dismays me still. Ruby and I don't get along. We never have. I tried. But I started with assembler (motorla/intel) and didn't see the need for such a language. If you love it, great. I don't, and I never will.
+fn2(small).  The continued use of ruby dismays me still. Ruby and I don't get along. We never have. I tried. But I started with assembler (motorla/intel) and didn't see the need for such a language. If you love it, great. I don't, and I never will. Assembler doesn't need hours of frustration to get started. Ruby, in my experience, does.
 
 
 

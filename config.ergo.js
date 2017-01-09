@@ -17,6 +17,15 @@ module.exports = {
 			  layout: "article.html"
 			  , path: "articles"
 		  }
+		, blog: {
+			layout: "post.html"
+			, default_fields: {
+				"author_image": "author.jpg"
+				, "author": "craig"
+				, "author_nick": "cmroanirgo"
+				, "author_website": "https://github.com/cmroanirgo"
+			}
+		}
 		, page: {
 			  layout: "article.html"
 		  }

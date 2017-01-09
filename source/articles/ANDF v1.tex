@@ -1,0 +1,110 @@
+{
+	title: "ANDF v1.0 Spec [draft]"
+	, miscdesc: "Specifications for A New Dawn Format, v1"
+}
+
+
+Here's a table of what I suggest for the 'A New Dawn Format', and what I'll be using for "ergo-cms":https://ergo-cms.github.io. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there's a clear fault in it).
+
+A Javascript implementation and this spec will be available at "https://github.com/cmroanirgo/andf":https://github.com/cmroanirgo/andf.
+
+h2. Specification
+
+In all cases @\n@ should be treated as @\r?\n@, to be line-endings agnostic.
+
+The use-case of this specification is to produce a hierarchical data structure similar to that of JSON, or more specificially a Javascript object. Note however, that the format should be able to be searched for a value, just like an .INI file, without needing to decode and load the whole file.
+
+Errors are to be expected in the file. They should _*never*_ generate an assert in production code, but is acceptable behaviour in test cases only. So, a prime use-case is to feed the deocder absolute junk (eg an image file). It will return an object, with nothing in it. This is an _error last_ approach. It is up to the rest of the code to decide that an empty object is acceptable or not.
+
+h3. Natural Names & Section Names
+
+We define a @natural-name@ as a regular expression: @[\w\-\.\/]*[\w]@. This a normal word (a-zA-Z0-9 & _) & '-', '/' & '.', but generally not ending with the symbols (except _). These are valid:
+
+* SomeKey
+* Some__--..//key2
+* ../some/key_
+
+These are NOT valid:
+
+* key/../
+* #key
+* key-
+* some key
+
+A @section-name@ is the same as a @natural-name@ except that spaces are allowed when used in the @[section name]@ blocks. See below.
+
+h3. Embeded Code
+
+The specification allows for code to be entered. The actual language of this code is up to the implementation, so a Perl implementation may render the code blocks as Perl. The Javascript implementation will render as Javascript and return a Javascript Object.
+
+h3. The Rest
+
+Where @section@ is: @/\n\s*\[(natural-name)\]\s*(?:\n)/@. @$1@ contains the section name. The one caveat is that a section name in @[ ]@ can also contain spaces.
+
+Where @comment@ is: @/\n[#;].*?@
+
+Where @key@ suits the regular expression: @/\n\s*(natural-name)\s*(?:\=\s*)/@. That is, a natural-word start at or near the start of a new line, with an equals sign after it. There need NOT be a value to the right of the equals. @$1@ contains the key
+
+Where @line-starters@ is either a comment, key, or section: @/(?:comment|key|section)/@
+
+Where @code-value@ suits the regular expression: @/\=\s*(\{ (.*)?\})\s*$/@. A code value continues to the end of a line. This may need ironing out a little more, to weigh security vs usability. This should always ONLY be a single line match, to encourage simplicity. @$1@ contains the 'code'.
+
+Similarly, @value@ suits the regular expression: @/\=\s*([\s\S]*?)(?:line-starters|$)/@. Matches all text until the next 'key =', [section], #comment, or end. @$1@ contains the value.
+
+Where @default-value@ is: @/\s*([\s\S])*\s*(?:line-starters|$)/@. Similar to @value@, but without need for the @\=\s*@ at the start. @$1@ contains the value.
+
+A @escaped-value-block@ suits the regular expression: @/-{3,}\s*\n([\s\S])*\s*\n(?:-{3,}|$)\s*/@. A block with --- and --- surrounding it. @$1@ contains the value.
+
+
+
+<pre style="min-width:860px"><code>title = Welcome to my homepage                               ; key + value
+uri = index.html                                                        ; key + value
+date={   (new Date()).toString + " OK"; }                               ; key + code+value
+metakeys = Some keys,other keys                                         ; key + value
+metadesc =                                                              ; key + ...
+I like writing blogs and learning                                       ;     ... continues
+about myself. Trailing spaces are                                       ;     ... continue
+eaten                                                                   ;     ... value
+
+[section1]                                                              ; section
+content = This is the content for some magical 'section 1' that exists. ; key + ...
+It keeps going until another '[section]' is found (on it's own line),   ;     ... continues
+or a 'key=' is met. Having a newline above [section] is optional.       ;     ... value
+extracss = green                                                        ; key + value
+
+#This is a comment. It needs to start with a "#" or                     ; comment
+; a ";"                                                                 ; comment
+
+section2.content = Another sections, using 'dot' notation.              ; key + ...
+These are also valid: [section.sub.subsub], section.sub.subsub.key =    ;      ... value
+
+[main content]                                                          ; section
+extracss = orange                                                       ; key + value
+
+Each section can also have it's own text. It must have a blank line     ; default-value 
+above it, OR be directly beneath a [section] mark                       ; ...(for main.content)
+And keeps on going until a valid [section], #comment, [section] or 
+key= is reached.
+
+[footer content]
+-------------                                        ; escaped-value-block, for 'footer content' default
+#This is footer content. This is NOT a comment
+;This is NOT a comment
+not-a-key = NOT a value
+
+All of this text is a 'default-value-block' (for footer.content). It is OK
+to forget the 3 dashes below, if the end of the file is reached.
+---
+
+[final.footer]
+some.key =                                           ; key (+ an empty value)
+---                                                  ; escaped-value-block, for 'final.footer' default
+This is the last block of text. 
+This is valid.
+</code></pre>
+
+
+
+
+
+

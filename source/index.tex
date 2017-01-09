@@ -6,48 +6,25 @@ layout:"homepage.html"
 }
 
 
-- "Ergo scribo.":https://translate.google.com/#la/en/Ergo%20scribo := Therefore, I Write.
-- "Scripsi. Ergo, est pulchra.":https://translate.google.com/#la/en/Scripsi.%20Ergo%2C%20est%20pulchra :=  I have written. Therefore, it is beautiful.[1]
+- Ergo scribo. := Therefore, I Write.
+- Scripsi. Ergo, est pulchra. :=  I have written. Therefore, it is beautiful.[1]
 
 
-h1={margin-top:3em}. ergo-cms is in it's infancy and will be live soon. You are welcome to follow the code on "github":https://github.com/ergo-cms/.
+h1={margin:3em auto}. ergo-cms is in it's infancy and will be live soon. You are welcome to follow the code on "github":https://github.com/ergo-cms/.
 
 If you're impatient, you can try playing with the skeleton file:
 
+bc. npm install ergo -g
+git clone https://github.com/ergo-cms/ergo-skel.git Blog
+cd Blog
+ergo build && ergo view --watch
+
+Don't want to install globally? No problem:
+
 bc. git clone https://github.com/ergo-cms/ergo-skel.git Blog
 cd Blog
-npm install ergo -g
-ergo build && ergo view -w
+npm install
+npm run build && npm run view -- --watch
 
 
-fn1{margin-top:5em;}(small). Disclaimer: According to google translate
-
-<!--
-h2. Getting Started
-
-* Install Ergo. (Ironically, this is optional)
-
-bc. npm install ergo-cli -g
-
-* Download a skeleton project from "https://github.com/ergo-cms/ergo-skel". Other skeletons will become available. Then change to that folder.
-
-OR, use @ergo-cli@ to download the basic skeleton for you:
-
-bc. ergo init Blog
-cd Blog
-
-* Start the local webserver, in 'watch' mode:
-
-bc. ergo view --watch
-
-* Open your browser to http://localhost:8181
-
-h2. Deploying
-
-When you're ready:
-
-bc. ergo deploy
-
-(You'll need to set some info in config.ergo.js first!)
-
--->
+fn1{margin-top:5em;}(small). Disclaimer: According to "google translate":https://translate.google.com/#la/en/Scripsi.%20Ergo%2C%20est%20pulchra
