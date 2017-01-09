@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Post Header Formats: Replacing YAML and JSON</title>
+<meta name="description" content="In search of a replacement for the YAML/JSON paradigm" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s post">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Post Header Formats: Replacing YAML and JSON</a></h1>
+</div>
+<div class="s post">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/blog/replacing-yaml-and-json.html">Post Header Formats: Replacing YAML and JSON</a></h1>
+<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world.</p>
+<h2 id="json">The illogical <span class="caps">JSON</span> and javascript objects</h2>
+<p>In a fair world, <span class="caps">JSON</span> would never have been created.</p>
+<p>It sounds strange to read it, but it&#8217;s true. <span class="caps">JSON</span> was developed as a way of normalising what everyone in Javascript was doing anyway:</p>
+<pre><code>var someObject = {
+	title: "My first post!",
+	date: new Date(), // I have a comment here
+	uri: "first-post.html",
+};</code></pre>
+<p>Unfortunately, in the lacklustre definition of <span class="caps">JSON</span>, the above block fails for two reasons:</p>
+<ol>
+	<li>It has a comment. Believe it or not, <span class="caps">JSON</span> decided to omit comments. You can understand the reasoning, when the people who decided on the spec decided that they wanted to be able to do away with whitespace, presumably so that it can be transmitted more succinctly across networks: <code>{title:"My first post!",date:new Date(),uri:"first-post.html"}</code></li>
+	<li>It has a trailing comma. Enough said.</li>
+</ol>
+<p>This means that <span class="caps">JSON</span> is not human friendly and never will be human friendly. Why? It was decided to be machine readable and that&#8217;s it. There&#8217;s a project to try and alleviate the nonsense and it&#8217;s called <span class="caps">HJSON</span>, but it still suffers from similar problems, namely that it&#8217;s based around a Javascript Object Notation (without actually being valid <span class="caps">JSON</span>).</p>
+<h2 id="yaml">The illogical <span class="caps">YAML</span> and <span class="caps">JSON</span></h2>
+<p><span class="caps">YAML</span> had always said that it was a superset of <span class="caps">JSON</span>. They lied. It took may revisions of <span class="caps">YAML</span> to actually be able to properly work with any and all <span class="caps">JSON</span> notation.</p>
+<p>Do you know what else is a superset of <span class="caps">JSON</span>? Javascript.</p>
+<p>That&#8217;s right. Javascript is a superset of <span class="caps">JSON</span>. So to me, the whole &#8216;YAML is a superset of <span class="caps">JSON</span>&#8216; experience is trite, to say the least.</p>
+<p>Then there&#8217;s also the fact that everyone who&#8217;s ever dealt with <span class="caps">YAML</span> <em>knows</em> they&#8217;re writing <span class="caps">YAML</span>. It&#8217;s supposed to be a friendly, human consumable markup. But if you&#8217;ve <em>ever</em> had to resort to a google search in order to find out that your <span class="caps">YAML</span> broke because of a few misplaced spaces proves another thing: <span class="caps">YAML</span> is a machine readable format first, human readable second. </p>
+<p>To me, this means there are too many issues for <span class="caps">YAML</span> to be useful to anyone. Then there&#8217;s this last nail in the coffin:</p>
+<p><span class="caps">YAML</span> was born of ruby. </p>
+<p>When I discovered that, I became a staunch anti-zealot of <span class="caps">YAML</span>. That meant Jekyll and co. were forever and ever, <em><strong>never</strong></em> going to get my support. I have spent way too many hours wading through a ruby install to find that it breaks for one of a gajillion reasons that I was never interested in. If it works for you, great, but I&#8217;ve been burnt many times over the years. I now just avoid ruby like the plague that that I have always found it to be.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
+<h2 id="ini"><span class="caps">INI</span> files</h2>
+<p>It comes to mind that no one ever has really worried about an &#8216;ini file&#8217; format. It&#8217;s the one that&#8217;s been quietly used for decades. You have come across it in php.ini, or .gitconfig, or any .ini file on a windblows box.</p>
+<p>To me this is the ideal &#8216;human readable&#8217; format, because you can figure it out easily. Actually, it&#8217;s so easy you don&#8217;t even notice that there&#8217;s anything to &#8216;figure out&#8217;. It just makes sense. There are no quotes, spaces, or anything to really worry about. Each line is a setting. Settings can be grouped into sections, using [section name]. The spaces around a &#8216; = &#8216; are there for visual purposes because they get trimmed out. </p>
+<p>Use of <span class="caps">INI</span> files is generally <em>fast</em>. Also, the Win32 api is pretty easy to use, so that you can have a massive .ini file and performance will be acceptable &#8212; even if you grabbed jsut one value at a time from the file.</p>
+<p>If only the ruby guys had&#8217;ve gone that way then I may not have given ruby up as a lost cause. (No more ruby bashing, I swear!)</p>
+<h2 id="multiline">The need for multiline text</h2>
+<p>All of the above formats are basically limited to one line of text per setting (although you <em>can</em> jump through hoops to get it to work). I feel that this is an important oversight when you consider a normal &#8216;home page&#8217; requirement. </p>
+<p>Unlike a standard &#8216;blog post&#8217; page, the &#8216;home page&#8217; generally has a lot of discrete sections that are specific to the page, but all of which can contain their own content. Most cms systems (including my own), have reverted to the logical choice of using partials (which have also been called snippets, fragements or blocks). Unfortunately, this breaks up the experience of <em>&#8216;editing the home page&#8217;</em> because it involves a sequence of:</p>
+<ul>
+	<li>Find the right block.</li>
+	<li>Edit the block.</li>
+	<li>Save the block.</li>
+	<li>Move onto the next block.</li>
+</ul>
+<p>This is just inefficient and non creative. Ironically, the best in this sphere is WordPress which allows you to define new fields for post types. Unfortunately, I&#8217;m also not a fan of WordPress: I looked at WordPress in the 90&#8217;s (or thereabouts) and shook my head. It&#8217;s now 2017 and they <em>still</em> have wp-admin<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>. Enough said. </p>
+<h2 id="andf">A new dawn on a header format</h2>
+<p>I won&#8217;t call this a markup language, because that infers &#8216;machine readable&#8217;. But for the sake of kitsch<sup class="footnote" id="fnr3"><a href="#fn3">3</a></sup>, let&#8217;s call it &#8220;A New Dawn Format&#8221;, or <span class="caps">ANDF</span>. Here is the above Javascript object:</p>
+<pre><code>title = This is my title
+date = {new Date();}
+uri = first-post.html</code></pre>
+<p>And here&#8217;s a quick overview on what a &#8216;home page&#8217; could look like:</p>
+<pre><code>title = The Perfect Blog
+Author = Craig
+layout = homepage.html
+markup_sections=*
+[header]
+Welcome to the Perfect Blog
+
+[banner-section]
+carousel_images = '/images/pic1.jpg','/images/pic2.jpg'
+carousel_height=140px
+
+Here you can find some pretty cool features about this place
+
+[projects]
+These are the projects I'm currently working on:
+
+* "Project 1":proj1.html
+* "Project 2":proj2.html
+* "Project 3":proj3.html
+
+[links.col1]
+* "Link 1":link1.html
+* "Link 2":link2.html
+* "Link 3":link3.html
+
+
+[links.col2]
+* "Project 1":proj1.html
+* "Project 2":proj2.html
+* "Project 3":proj3.html
+* "Project 4":proj4.html
+* "Project 5":proj5.html
+
+
+[links.col3]
+This is a mini description that describes who I am and what I've done. See "About":about.html for more information
+</code></pre>
+<p>Isn&#8217;t this a whole lot easier to digest and understand? Note that the <code>markup_sections=*</code> is to explicitly mention what sections need marking up. Be default it will be everything, but sometimes you&#8217;d need something else.</p>
+<h2><span class="caps">ANDF</span> format (v1)</h2>
+<p>See here for <a href="/articles/andf-v1.html">the <span class="caps">ANDF</span> v1 format</a></p>
+<hr />
+<p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> To be fair. I also bash Markdown just as much. It&#8217;s <strong>only</strong> place in the world should in GitHub <span class="caps">README</span>&#8216;s or super-ultra-boring-to-read automated documentation suites. I&#8217;ve never understood why it became so popular, especially since many were using WikiText before then. To me, WikiText is much easier to read. Except Textile, of course. I&#8217;ve seen the light wrt Textile. I &lt;3 Textile. Too bad <a href="https://github.com/blog/2115-upgrading-your-textile-posts-to-markdown">GitHub has become evil and now hates Textile</a>, because they&#8217;re on the &#8216;I love Jekyll&#8217; boat, apparently. Whateva. This post was written in Textile and is posted on github pages. I win ;)</p>
+<p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> WordPress has finally begun to address the issue with a new project. I&#8217;m tired of waiting for others to solve my issues, so here I am writing ergo-cms.</p>
+<p class="small footnote" id="fn3"><a href="#fnr3"><sup>3</sup></a> <a href="https://en.oxforddictionaries.com/definition/kitsch">Considered to be in poor taste but appreciated in an ironic or knowing way</a></p>
+</div>
+<div id="sidebar">
+	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>9 Jan 2017</p>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+
