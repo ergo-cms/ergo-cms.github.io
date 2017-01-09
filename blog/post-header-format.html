@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Post Header Formats</title>
-<meta name="description" content="In search of a new format" />
+<meta name="description" content="In search of a replacement for the YAML/JSON paradigm" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
@@ -34,7 +34,7 @@
 
 
 <h1><a href="/blog/post-header-format.html">Post Header Formats</a></h1>
-<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table.</p>
+<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world.</p>
 <h2 id="json">The illogical <span class="caps">JSON</span> and javascript objects</h2>
 <p>In a fair world, <span class="caps">JSON</span> would never have been created.</p>
 <p>It sounds strange to read it, but it&#8217;s true. <span class="caps">JSON</span> was developed as a way of normalising what everyone in Javascript was doing anyway:</p>
@@ -57,11 +57,12 @@
 <p>To me, this means there are too many issues for <span class="caps">YAML</span> to be useful to anyone. Then there&#8217;s this last nail in the coffin:</p>
 <p><span class="caps">YAML</span> was born of ruby. </p>
 <p>When I discovered that, I became a staunch anti-zealot of <span class="caps">YAML</span>. That meant Jekyll and co. were forever and ever, <em><strong>never</strong></em> going to get my support. I have spent way too many hours wading through a ruby install to find that it breaks for one of a gajillion reasons that I was never interested in. If it works for you, great, but I&#8217;ve been burnt many times over the years. I now just avoid ruby like the plague that that I have always found it to be.<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup></p>
-<h2 id="ini"><span class="caps">INI</span> files.</h2>
+<h2 id="ini"><span class="caps">INI</span> files</h2>
 <p>It comes to mind that no one ever has really worried about an &#8216;ini file&#8217; format. It&#8217;s the one that&#8217;s been quietly used for decades. You have come across it in php.ini, or .gitconfig, or any .ini file on a windblows box.</p>
 <p>To me this is the ideal &#8216;human readable&#8217; format, because you can figure it out easily. Actually, it&#8217;s so easy you don&#8217;t even notice that there&#8217;s anything to &#8216;figure out&#8217;. It just makes sense. There are no quotes, spaces, or anything to really worry about. Each line is a setting. Settings can be grouped into sections, using [section name]. The spaces around a &#8216; = &#8216; are there for visual purposes because they get trimmed out. </p>
+<p>Use of <span class="caps">INI</span> files is generally <em>fast</em>. Also, the Win32 api is pretty easy to use, so that you can have a massive .ini file and performance will be acceptable &#8212; even if you grabbed jsut one value at a time from the file.</p>
 <p>If only the ruby guys had&#8217;ve gone that way then I may not have given ruby up as a lost cause. (No more ruby bashing, I swear!)</p>
-<h2 id="multiline">The need for multiline text.</h2>
+<h2 id="multiline">The need for multiline text</h2>
 <p>All of the above formats are basically limited to one line of text per setting (although you <em>can</em> jump through hoops to get it to work). I feel that this is an important oversight when you consider a normal &#8216;home page&#8217; requirement. </p>
 <p>Unlike a standard &#8216;blog post&#8217; page, the &#8216;home page&#8217; generally has a lot of discrete sections that are specific to the page, but all of which can contain their own content. Most cms systems (including my own), have reverted to the logical choice of using partials (which have also been called snippets, fragements or blocks). Unfortunately, this breaks up the experience of <em>&#8216;editing the home page&#8217;</em> because it involves a sequence of:</p>
 <ul>
@@ -71,8 +72,8 @@
 	<li>Move onto the next block.</li>
 </ul>
 <p>This is just inefficient and non creative. Ironically, the best in this sphere is WordPress which allows you to define new fields for post types. Unfortunately, I&#8217;m also not a fan of WordPress: I looked at WordPress in the 90&#8217;s (or thereabouts) and shook my head. It&#8217;s now 2017 and they <em>still</em> have wp-admin<sup class="footnote" id="fnr2"><a href="#fn2">2</a></sup>. Enough said. </p>
-<h2 id="andf">A new dawn on a header format.</h2>
-<p>I won&#8217;t call this a markup language, because that infers &#8216;machine readable&#8217;. But for the sake of kitch-iness, let&#8217;s call it &#8220;A New Dawn Format&#8221;, or <span class="caps">ANDF</span>. Here is the above Javascript object:</p>
+<h2 id="andf">A new dawn on a header format</h2>
+<p>I won&#8217;t call this a markup language, because that infers &#8216;machine readable&#8217;. But for the sake of kitsch<sup class="footnote" id="fnr3"><a href="#fn3">3</a></sup>, let&#8217;s call it &#8220;A New Dawn Format&#8221;, or <span class="caps">ANDF</span>. Here is the above Javascript object:</p>
 <pre><code>title = This is my title
 date = {new Date();}
 uri = first-post.html</code></pre>
@@ -118,8 +119,9 @@ This is a mini description that describes who I am and what I've done. See "Abou
 <h2><span class="caps">ANDF</span> format (v1)</h2>
 <p>See here for <a href="/articles/andf-v1.html">the <span class="caps">ANDF</span> v1 format</a></p>
 <hr />
-<p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> To be fair. I also bash Markdown just as much. It&#8217;s <strong>only</strong> place in the world should in GitHub <span class="caps">README</span>&#8216;s or super-ultra-boring-to-read automated documentation suites. I&#8217;ve never understood why it became so popular, easpecially since many were using WikiText before then. To me, WikiText is much easier to read. Except Textile, of course. I&#8217;ve seen the light wrt Textile. I &lt;3 Textile. Too bad <a href="https://github.com/blog/2115-upgrading-your-textile-posts-to-markdown">GitHub has become evil and now hates Textile</a>, because they&#8217;re on the &#8216;I love Jekyll&#8217; boat, apparently. Whateva. This post was written in Textile and is posted on github pages. I win ;)</p>
+<p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> To be fair. I also bash Markdown just as much. It&#8217;s <strong>only</strong> place in the world should in GitHub <span class="caps">README</span>&#8216;s or super-ultra-boring-to-read automated documentation suites. I&#8217;ve never understood why it became so popular, especially since many were using WikiText before then. To me, WikiText is much easier to read. Except Textile, of course. I&#8217;ve seen the light wrt Textile. I &lt;3 Textile. Too bad <a href="https://github.com/blog/2115-upgrading-your-textile-posts-to-markdown">GitHub has become evil and now hates Textile</a>, because they&#8217;re on the &#8216;I love Jekyll&#8217; boat, apparently. Whateva. This post was written in Textile and is posted on github pages. I win ;)</p>
 <p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> WordPress has finally begun to address the issue with a new project. I&#8217;m tired of waiting for others to solve my issues, so here I am writing ergo-cms.</p>
+<p class="small footnote" id="fn3"><a href="#fnr3"><sup>3</sup></a> <a href="https://en.oxforddictionaries.com/definition/kitsch">Considered to be in poor taste but appreciated in an ironic or knowing way</a></p>
 </div>
 <div id="sidebar">
 	<p><img id="author_img" src="/images/author.jpg" /></p>
