@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ANDF v1.0 Spec [draft]</title>
+
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s ">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> ANDF v1.0 Spec [draft]</a></h1>
+</div>
+<div class="s ">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/articles/andf-v1.html">ANDF v1.0 Spec [draft]</a></h1>
+<p>Here&#8217;s a table of what I suggest for the &#8216;A New Dawn Format&#8217;, and what I&#8217;ll be using for <a href="https://ergo-cms.github.io">ergo-cms</a>. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there&#8217;s a clear fault in it).</p>
+<p>A Javascript implementation and this spec will be available at <a href="https://github.com/cmroanirgo/andf">https://github.com/cmroanirgo/andf</a>.</p>
+<h2>Specification</h2>
+<p>In all cases <code>\n</code> should be treated as <code>\r?\n</code>, to be line-endings agnostic.</p>
+<p>The use-case of this specification is to produce a hierarchical data structure similar to that of <span class="caps">JSON</span>, or more specificially a Javascript object. Note however, that the format should be able to be searched for a value, just like an .INI file, without needing to decode and load the whole file.</p>
+<p>Errors are to be expected in the file. They should <em><strong>never</strong></em> generate an assert in production code, but is acceptable behaviour in test cases only. So, a prime use-case is to feed the deocder absolute junk (eg an image file). It will return an object, with nothing in it. This is an <em>error last</em> approach. It is up to the rest of the code to decide that an empty object is acceptable or not.</p>
+<h3>Natural Names &amp; Section Names</h3>
+<p>We define a <code>natural-name</code> as a regular expression: <code>[\w\-\.\/]*[\w]</code>. This a normal word (a-zA-Z0-9 &amp; _) &amp; &#8216;-&#8217;, &#8216;/&#8217; &amp; &#8216;.&#8217;, but generally not ending with the symbols (except _). These are valid:</p>
+<ul>
+	<li>SomeKey</li>
+	<li>Some__--..//key2</li>
+	<li>../some/key_</li>
+</ul>
+<p>These are <span class="caps">NOT</span> valid:</p>
+<ul>
+	<li>key/../</li>
+	<li>#key</li>
+	<li>key-</li>
+	<li>some key</li>
+</ul>
+<p>A <code>section-name</code> is the same as a <code>natural-name</code> except that spaces are allowed when used in the <code>[section name]</code> blocks. See below.</p>
+<h3>Embeded Code</h3>
+<p>The specification allows for code to be entered. The actual language of this code is up to the implementation, so a Perl implementation may render the code blocks as Perl. The Javascript implementation will render as Javascript and return a Javascript Object.</p>
+<h3>The Rest</h3>
+<p>Where <code>section</code> is: <code>/\n\s*\[(natural-name)\]\s*(?:\n)/</code>. <code>$1</code> contains the section name. The one caveat is that a section name in <code>[ ]</code> can also contain spaces.</p>
+<p>Where <code>comment</code> is: <code>/\n[#;].*?</code></p>
+<p>Where <code>key</code> suits the regular expression: <code>/\n\s*(natural-name)\s*(?:\=\s*)/</code>. That is, a natural-word start at or near the start of a new line, with an equals sign after it. There need <span class="caps">NOT</span> be a value to the right of the equals. <code>$1</code> contains the key</p>
+<p>Where <code>line-starters</code> is either a comment, key, or section: <code>/(?:comment|key|section)/</code></p>
+<p>Where <code>code-value</code> suits the regular expression: <code>/\=\s*(\{ (.*)?\})\s*$/</code>. A code value continues to the end of a line. This may need ironing out a little more, to weigh security vs usability. This should always <span class="caps">ONLY</span> be a single line match, to encourage simplicity. <code>$1</code> contains the &#8216;code&#8217;.</p>
+<p>Similarly, <code>value</code> suits the regular expression: <code>/\=\s*([\s\S]*?)(?:line-starters|$)/</code>. Matches all text until the next &#8216;key =&#8217;, [section], #comment, or end. <code>$1</code> contains the value.</p>
+<p>Where <code>default-value</code> is: <code>/\s*([\s\S])*\s*(?:line-starters|$)/</code>. Similar to <code>value</code>, but without need for the <code>\=\s*</code> at the start. <code>$1</code> contains the value.</p>
+<p>A <code>escaped-value-block</code> suits the regular expression: <code>/-\s*\n([\s\S])*\s*\n(?:-|$)\s*/</code>. A block with --- and --- surrounding it. <code>$1</code> contains the value.</p>
+<pre style="min-width:860px"><code>title = Welcome to my homepage                               ; key + value
+uri = index.html                                                        ; key + value
+date={   (new Date()).toString + " OK"; }                               ; key + code+value
+metakeys = Some keys,other keys                                         ; key + value
+metadesc =                                                              ; key + ...
+I like writing blogs and learning                                       ;     ... continues
+about myself. Trailing spaces are                                       ;     ... continue
+eaten                                                                   ;     ... value
+
+[section1]                                                              ; section
+content = This is the content for some magical 'section 1' that exists. ; key + ...
+It keeps going until another '[section]' is found (on it's own line),   ;     ... continues
+or a 'key=' is met. Having a newline above [section] is optional.       ;     ... value
+extracss = green                                                        ; key + value
+
+#This is a comment. It needs to start with a "#" or                     ; comment
+; a ";"                                                                 ; comment
+
+section2.content = Another sections, using 'dot' notation.              ; key + ...
+These are also valid: [section.sub.subsub], section.sub.subsub.key =    ;      ... value
+
+[main content]                                                          ; section
+extracss = orange                                                       ; key + value
+
+Each section can also have it's own text. It must have a blank line     ; default-value 
+above it, OR be directly beneath a [section] mark                       ; ...(for main.content)
+And keeps on going until a valid [section], #comment, [section] or 
+key= is reached.
+
+[footer content]
+-------------                                        ; escaped-value-block, for 'footer content' default
+#This is footer content. This is NOT a comment
+;This is NOT a comment
+not-a-key = NOT a value
+
+All of this text is a 'default-value-block' (for footer.content). It is OK
+to forget the 3 dashes below, if the end of the file is reached.
+---
+
+[final.footer]
+some.key =                                           ; key (+ an empty value)
+---                                                  ; escaped-value-block, for 'final.footer' default
+This is the last block of text. 
+This is valid.
+</code></pre>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+
