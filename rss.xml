@@ -7,6 +7,13 @@
 <atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
 <ttl>720</ttl>
 <item>
+<link>https://ergo-cms.github.io/blog/using-jsinf.html</link>
+<guid isPermaLink="false">blog/using-jsinf.html</guid>
+<pubDate>Mon, 09 Jan 2017 13:00:00 GMT</pubDate>
+<title>Using JSINF</title>
+<description>Feedback about using JSINF</description>
+</item>
+<item>
 <link>https://ergo-cms.github.io/blog/replacing-yaml-and-json.html</link>
 <guid isPermaLink="false">blog/replacing-yaml-and-json.html</guid>
 <pubDate>Sun, 08 Jan 2017 13:00:00 GMT</pubDate>
@@ -17,7 +24,7 @@
 <item>
 <link>https://ergo-cms.github.io/articles/jsinf-v1.html</link>
 <guid isPermaLink="false">articles/jsinf-v1.html</guid>
-<pubDate>Mon, 09 Jan 2017 23:22:51 GMT</pubDate>
+<pubDate>Tue, 10 Jan 2017 07:16:02 GMT</pubDate>
 <title>JSINF v1.0 Spec [draft]</title>
 <description>Specifications for JSINF, a human readable configuration, v1</description>
 </item>

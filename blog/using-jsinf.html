@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Using JSINF</title>
+<meta name="description" content="Feedback about using JSINF" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s post">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Using JSINF</a></h1>
+</div>
+<div class="s post">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/blog/using-jsinf.html">Using JSINF</a></h1>
+<p>Well, it&#8217;s done. I&#8217;ve spent a couple of days writing <a href="https://github.com/cmroanirgo/jsinf"><em><span class="caps">JSINF</span></em></a> and was pleasantly surprised at how <em>easy</em> I could drop it in as a replacement for the <span class="caps">JSON</span> headers I had been using. But not only that, because <span class="caps">JSINF</span> supports a &#8216;default block&#8217;, I was easily able to decode the content in one easy swoop! </p>
+<p>Honestly, I thought I&#8217;d have a couple of gotchas here or there. The <em>worst</em> thing (if that&#8217;s really such a thing) is that it&#8217;s a bit of a <em>mind set</em> to get around <span class="caps">NOT</span> using quotes to describe the fields. But, for the better, this blog (&amp; the whole ergo-cms website) is dogfooding<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> itself.</p>
+<p>This is what this page&#8217;s header now looks like:</p>
+<pre><code>title = Dogfooding JSINF
+metadesc = Feedback about using JSINF
+date = 10 Jan 2017
+---
+...</code></pre>
+<p>That&#8217;s right. It&#8217;s easy to understand and read. I&#8217;m glad I wrote it. This is the code I use to actually load this page and convert it to a Javascript Object:</p>
+<pre><code>var fields = jsinf.decode(text, { 
+				block_divider: "\#\#\#+", 
+				default_key: "content"
+			});</code></pre>
+<p>It&#8217;s so easy it&#8217;s scary! Now it&#8217;s time to go and create a bootstrap skeleton and add a modicum of theme support&#8230;</p>
+<hr />
+<p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> For those who don&#8217;t know what <em>dog fooding</em> is, it&#8217;s an expression to indicate that it&#8217;s using itself to generate itself.</p>
+</div>
+<div id="sidebar">
+	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>10 Jan 2017</p>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+
