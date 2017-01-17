@@ -7,6 +7,13 @@
 <atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
 <ttl>720</ttl>
 <item>
+<link>https://ergo-cms.github.io/blog/usematch-data-filtering.html</link>
+<guid isPermaLink="false">blog/usematch-data-filtering.html</guid>
+<pubDate>Tue, 17 Jan 2017 13:00:00 GMT</pubDate>
+<title>Usematch data filtering</title>
+<description>A review of Usematch's data filtering capabilites</description>
+</item>
+<item>
 <link>https://ergo-cms.github.io/blog/intro-to-usematch.html</link>
 <guid isPermaLink="false">blog/intro-to-usematch.html</guid>
 <pubDate>Mon, 16 Jan 2017 13:00:00 GMT</pubDate>

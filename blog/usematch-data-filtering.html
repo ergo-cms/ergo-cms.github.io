@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Usematch data filtering</title>
+<meta name="description" content="A review of Usematch's data filtering capabilites" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s post">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Usematch data filtering</a></h1>
+</div>
+<div class="s post">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/blog/usematch-data-filtering.html">Usematch data filtering</a></h1>
+<p>With <a href="https:github.com/cmroanrigo/usematch">Usematch</a> v1.1.x (and later) comes the pre filtering support mentioned in the <a href="intro_to_usematch.html">previous post</a>. I&#8217;m pretty happy with it and it comes with a few unintended (but cool) side effects.</p>
+<p>The basic setup for a data filter looks like this:</p>
+<pre><code>var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	customFilter: function(data, named_params) {
+		data = data.sort( ... )
+		return data.slice(named_params.len || 10);
+	}
+}</code></pre>
+<p>And to use it from a template:</p>
+<pre><code>{{#posts @customFilter{len:5} }} ... {{/posts}}</code></pre>
+<p>So far, so good. I felt for ergo-cms, it was just as important to have a filter that could be applied to <i>any</i> kind of list (posts, authors, tags, etc, etc), and this is where the &#8216;automagic&#8217; prefilter comes in, and has the format of <code>section.prefilter</code> defined in the data context:</p>
+<pre><code>var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	'posts.prefilter: function(data, named_params) {
+		data = data.sort( ... )
+		return data.slice(named_params.len || 10);
+	}
+}</code></pre>
+<p>So, now the filter is always invoked, without the template designer doing anything:</p>
+<pre><code>{{#posts}} ... {{/posts}}</code></pre>
+<p>This of course, can have some grave consequences, and so <i>by default</i> ergo-cms&#8217;s filters won&#8217;t do anything, unless a &#8216;parameter&#8217; is passed to the filter, which looks like:</p>
+<pre><code>{{#posts @{len:10} }} ... {{/posts}}</code></pre>
+<p>OR, to get the top 10 newest posts:</p>
+<pre><code>{{#posts @{len:10,sortBy:'date,desc'} }} ... {{/posts}}</code></pre>
+<p>OR, to get the top 10 tags by usage:</p>
+<pre><code>{{#tags @{len:10,sortBy:'length,desc'} }} ... {{/tags}}</code></pre>
+<p>I think this a very cool and very powerful feature that is simply missing from most of the cms systems out there. To make this even easier, by default ergo-cms will sort by posts in reverse order (by file date), and tags by their usage and categories by their name. Of course, as a user, these can be overridden easily by simply redefining the filter in your <code>config.ergo.js</code> file:</p>
+<pre><code>default_fields: {
+	'tags.prefilter' : function(tags, params) { 
+		// do custom stuff here
+		return tags;
+	}
+}</code></pre>
+<p></p>
+</div>
+<div id="sidebar">
+	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>18 Jan 2017</p>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+
