@@ -1,0 +1,32 @@
+title = Using JSINF
+metadesc = Feedback about using JSINF
+date = 10 Jan 2017
+
+###
+
+Well, it's done. I've spent a couple of days writing "_JSINF_":https://github.com/cmroanirgo/jsinf and was pleasantly surprised at how _easy_ I could drop it in as a replacement for the JSON headers I had been using. But not only that, because JSINF supports a 'default block', I was easily able to decode the content in one easy swoop! So, no more YAML or JSON for me!
+
+Honestly, I thought I'd have a couple of gotchas here or there. The _worst_ thing (if that's really such a thing) is that it's a bit of a _mind set_ to get around NOT using quotes to describe the fields. But, for the better, this blog (& the whole ergo-cms website) is dogfooding[1] itself.
+
+This is what this page's header now looks like:
+
+bc. title = Dogfooding JSINF
+metadesc = Feedback about using JSINF
+date = 10 Jan 2017
+---
+...
+
+
+That's right. It's easy to understand and read. I'm glad I wrote it. This is the code I use to actually load this page and convert it to a Javascript Object:
+
+bc. var fields = jsinf.decode(text, { 
+				block_divider: "\#\#\#+", 
+				default_key: "content"
+			});
+
+It's so easy it's scary! Now it's time to go and create a bootstrap skeleton and add a modicum of theme support...
+
+------
+
+fn1(small). For those who don't know what _dog fooding_ is, it's an expression to indicate that it's using itself to generate itself.
+

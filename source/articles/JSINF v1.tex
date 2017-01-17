@@ -1,14 +1,12 @@
-{
-	title: "ANDF v1.0 Spec [draft]"
-	, miscdesc: "Specifications for A New Dawn Format, v1"
-}
+title = JSINF v1.0 Spec [draft]
+metadesc = Specifications for JSINF, a human readable configuration, v1
+###
 
+Here's a table of what I suggest for the JSINF, and what I'll be using for "ergo-cms":https://ergo-cms.github.io. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there's a clear fault in it).
 
-Here's a table of what I suggest for the 'A New Dawn Format', and what I'll be using for "ergo-cms":https://ergo-cms.github.io. This spec will be updated here (or links to updated spec). The javascript implementation shall be the final arbitrar of ambiguity (unless there's a clear fault in it).
+A Javascript implementation and this spec will be available at "https://github.com/cmroanirgo/jsinf":https://github.com/cmroanirgo/jsinf.
 
-A Javascript implementation and this spec will be available at "https://github.com/cmroanirgo/andf":https://github.com/cmroanirgo/andf.
-
-h2. Specification
+h2. Specification [draft]
 
 In all cases @\n@ should be treated as @\r?\n@, to be line-endings agnostic.
 
@@ -83,8 +81,8 @@ extracss = orange                                                       ; key + 
 
 Each section can also have it's own text. It must have a blank line     ; default-value 
 above it, OR be directly beneath a [section] mark                       ; ...(for main.content)
-And keeps on going until a valid [section], #comment, [section] or 
-key= is reached.
+And keeps on going until a valid [section], #comment, [section] or key=
+is reached.
 
 [footer content]
 -------------                                        ; escaped-value-block, for 'footer content' default
@@ -94,7 +92,7 @@ not-a-key = NOT a value
 
 All of this text is a 'default-value-block' (for footer.content). It is OK
 to forget the 3 dashes below, if the end of the file is reached.
----
+---         ; the end of the block
 
 [final.footer]
 some.key =                                           ; key (+ an empty value)

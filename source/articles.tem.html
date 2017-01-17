@@ -1,15 +1,11 @@
-{include:header.inc.html}
-
-
+{{>header.inc.html}}
 <h1>Articles</h1>
 More articles coming soon!
 
-<dl>
-  {begin:article}
-	<dt><a href="{uri}">{title}</a></dt>
-	<dd>{metadesc}</dd>
-  {end:article}
+<dl>{{#article}}
+	<dt><a href="{{uri}}">{{title}}</a></dt>
+	<dd>{{metadesc}}</dd>{{/article}}
 </dl>
 
 <p>&nbsp;</p>
-{include:footer.inc.html}
+{{>footer.inc.html}}

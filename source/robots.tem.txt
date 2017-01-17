@@ -2,5 +2,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: {site_url}sitemap.xml
+Sitemap: {{site_url}}sitemap.xml
 

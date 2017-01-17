@@ -2,13 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>{title}</title>
-{if:metadesc}<meta name="description" content="{metadesc}" />{end}
-{if:metakeys}<meta name="keywords" content="{metakeys}" />{end}
+<title>{{title}}</title>
+{{#metadesc}}<meta name="description" content="{{metadesc}}" />{{/metadesc}}
+{{#metakeys}}<meta name="keywords" content="{{metakeys}}" />{{/metakeys}}
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
-<meta property="author" content="{author}" />
+<meta property="author" content="{{author}}" />
 <!-- 
              ____  ____   ___   __         ___  _  _  ____ 
       O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
@@ -17,13 +17,13 @@
 -->
 </head>
 <body>
-<div id="banner" class="s {extracss}">
+<div id="banner" class="s {{extracss}}">
 	<div id="nav">
-	{include:menu.tex}
+	{{>menu}}
 	</div>
-	<h1 id="title"><a href="#content"><b>∴</b> {title}</a></h1>
+	<h1 id="title"><a href="#content"><b>∴</b> {{title}}</a></h1>
 </div>
-<div class="s {extracss}">
+<div class="s {{extracss}}">
 <div class="c">
 <div id="content">
 

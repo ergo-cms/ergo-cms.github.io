@@ -1,11 +1,10 @@
-{include:header.inc.html}
+{{>header.inc.html}}
 <h1>Blog Posts</h1>
-<dl>
-  {begin:blog}
-	<dt><a href="{uri}">{title}</a></dt>
-	<dd>{metadesc}</dd>
-  {end:blog}
+
+<dl>{{#blog}}
+	<dt><a href="{{uri}}">{{title}}</a></dt>
+	<dd>{{metadesc}}</dd>{{/blog}}
 </dl>
 
 <p>&nbsp;</p>
-{include:footer.inc.html}
+{{>footer.inc.html}}

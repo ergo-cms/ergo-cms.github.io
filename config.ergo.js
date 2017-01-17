@@ -7,9 +7,12 @@ module.exports = {
 	, default_fields: {
 		  site_url: "https://ergo-cms.github.io/" 
 		, title: "ergo-cms ∴" // this goes in <title>tags generally, but also used in rss 
+		, author: "craig"
 	  }
-	, plugin_optins: {
-		textile: {breaks:true}
+	, verbose:2
+	, debug:-1
+	, log_options: {
+	 	//match_file: /(using jsinf.tex)/
 	}
 	, default_post_type: "page"
 	, post_types: {
@@ -21,7 +24,6 @@ module.exports = {
 			layout: "post.html"
 			, default_fields: {
 				"author_image": "author.jpg"
-				, "author": "craig"
 				, "author_nick": "cmroanirgo"
 				, "author_website": "https://github.com/cmroanirgo"
 			}
