@@ -7,6 +7,13 @@
 <atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
 <ttl>720</ttl>
 <item>
+<link>https://ergo-cms.github.io/blog/intro-to-usematch.html</link>
+<guid isPermaLink="false">blog/intro-to-usematch.html</guid>
+<pubDate>Mon, 16 Jan 2017 13:00:00 GMT</pubDate>
+<title>Intro to Usematch</title>
+<description>A new templating engine, extending Mustache</description>
+</item>
+<item>
 <link>https://ergo-cms.github.io/blog/using-jsinf.html</link>
 <guid isPermaLink="false">blog/using-jsinf.html</guid>
 <pubDate>Mon, 09 Jan 2017 13:00:00 GMT</pubDate>
@@ -20,7 +27,6 @@
 <title>Replacing YAML and JSON with Something</title>
 <description>In search of a replacement for the YAML/JSON paradigm</description>
 </item>
-
 <item>
 <link>https://ergo-cms.github.io/articles/jsinf-v1.html</link>
 <guid isPermaLink="false">articles/jsinf-v1.html</guid>
@@ -35,6 +41,5 @@
 <title>Frequently Asked Questions</title>
 <description>Get your answers here, in Frequently Asked Questions.</description>
 </item>
-
 </channel>
 </rss>

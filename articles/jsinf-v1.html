@@ -8,7 +8,7 @@
 <link href="/styles.css" rel="stylesheet" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
-<meta property="author" content="" />
+<meta property="author" content="craig" />
 <!-- 
              ____  ____   ___   __         ___  _  _  ____ 
       O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
@@ -65,7 +65,7 @@
 <p>Where <code>code-value</code> suits the regular expression: <code>/\=\s*(\{ (.*)?\})\s*$/</code>. A code value continues to the end of a line. This may need ironing out a little more, to weigh security vs usability. This should always <span class="caps">ONLY</span> be a single line match, to encourage simplicity. <code>$1</code> contains the &#8216;code&#8217;.</p>
 <p>Similarly, <code>value</code> suits the regular expression: <code>/\=\s*([\s\S]*?)(?:line-starters|$)/</code>. Matches all text until the next &#8216;key =&#8217;, [section], #comment, or end. <code>$1</code> contains the value.</p>
 <p>Where <code>default-value</code> is: <code>/\s*([\s\S])*\s*(?:line-starters|$)/</code>. Similar to <code>value</code>, but without need for the <code>\=\s*</code> at the start. <code>$1</code> contains the value.</p>
-<p>A <code>escaped-value-block</code> suits the regular expression: <code>/-\s*\n([\s\S])*\s*\n(?:-|$)\s*/</code>. A block with --- and --- surrounding it. <code>$1</code> contains the value.</p>
+<p>A <code>escaped-value-block</code> suits the regular expression: <code>/-{3,}\s*\n([\s\S])*\s*\n(?:-{3,}|$)\s*/</code>. A block with --- and --- surrounding it. <code>$1</code> contains the value.</p>
 <pre style="min-width:860px"><code>title = Welcome to my homepage                               ; key + value
 uri = index.html                                                        ; key + value
 date={   (new Date()).toString + " OK"; }                               ; key + code+value

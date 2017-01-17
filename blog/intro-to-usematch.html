@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Intro to Usematch</title>
+<meta name="description" content="A new templating engine, extending Mustache" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s post">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Intro to Usematch</a></h1>
+</div>
+<div class="s post">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/blog/intro-to-usematch.html">Intro to Usematch</a></h1>
+<p>I was unhappy with the cheap and nasty, <i>roll-it-your-own</i> templating engine that I&#8217;d put up with in previous incarnations of ergo-cms. I&#8217;d seen quite a lot of clamour about Mustache and how great it is and was interested to see if it could drop into ergo-cms very easily, while still retaining the feature set that I&#8217;d become used to having.</p>
+<p>Unfortunately, it fell flat. <i>:sigh:</i></p>
+<p>Although a popular engine, Mustache is surprisingly minimalist in quite a few areas, particularly that of extensibility, which in my eyes, is always a no-go. Then again, that&#8217;s the way those crazy ruby guys go, and so it shouldn&#8217;t have come as a surprise to me that the feature set of Mustache was rather locked down.</p>
+<p>Looking at the code of Mustache, it seemed quite clear it was going to be that way forever when I saw this little gem:</p>
+<pre><code> // Export the escaping function so that the user may override it.
+  // See https://github.com/janl/mustache.js/issues/244
+  mustache.escape = escapeHtml;</code></pre>
+<p>Wondering why, I looked at escapeHtml and saw that they were escaping some pretty strange things indeed:</p>
+<pre><code> var entityMap = {
+    '&amp;': '&amp;',
+    '&lt;': '&lt;',
+    '&gt;': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+  };
+  function escapeHtml (string) {
+    return String(string).replace(/[&amp;&lt;&gt;"'`=\/]/g, function fromEntityMap (s) {
+      return entityMap[s];
+    });
+  }</code></pre>
+<p>Hopefully someone can explain to me the logic of escaping quotes and slashes and equals to their unicode equivalent (especially <i>and limited to</i> the context of escaping <span class="caps">HTML</span>)!? I&#8217;ve always just escaped the first 4 on the list (&amp;, &lt;, &gt; and &#8220;), although the last one (&#8220;) is completely uncessary.</p>
+<p>But those things aside, I discovered that Mustache couldn&#8217;t handle a few things that I need for this <span class="caps">CMS</span>, which are:</p>
+<ul>
+	<li>The ability to define default properties in the template itself.</li>
+	<li>The ability to <strong>change</strong> what kind of encoding is used. I need to use the template engine for more than just <span class="caps">HTML</span>. I need it for <span class="caps">XML</span> and txt too!</li>
+	<li>The ability to dynamically &#8216;futz&#8217; with the data, morphing it according to designer requirements.</li>
+</ul>
+Having also looked at a similar project Handlebars, I just didn&#8217;t &#8216;get it&#8217;. This is quite proably because it seems aimed at templating within the browser landscape, which is not a good fit for this project at all. Nevertheless, I didn&#8217;t see any solutions for the above requirements jumping up at me.
+<p>So, I decided that I needed to write a new templating engine, one that satifies my requirements, but is also 100% compatible with a mustache template. Three days later: voila! We have <b><a href="https://github.com/cmroanirgo/usematch">Usematch</a></b> (it&#8217;s an anagram of Mustache). Much of the time was actually getting it to pass all of Mustache&#8217;s rendering tests. I&#8217;m pretty happy with it, and this post is using Usematch, along with the previous mentioned <a href="https://github.com/cmroanirgo/jsinf"><span class="caps">JSINF</span></a>. </p>
+<p>There&#8217;s still a feature I need to add in, however. Namely, the ability to run section blocks through a pre-filter. Post-filtering is working wonderfully:</p>
+<pre><code>const usematch = require('usematch');
+var data = {
+	title:"Hello World!",
+	toUpper: function(value) { return value.toUpperCase(); }
+}	
+console.log(usematch.render('{{title #toUpper}}', data));
+// prints: "HELLO WORLD!"</code></pre>
+<p>So, back to my pre-filter&#8230; With it you could do some data mangling (sorting it, &amp; only returning the top 10 elements, etc). I had in mind this notation: <code>{{#posts @filterThePosts}}</code>, and parameters can be passed by name: <code>{{#posts @customFilter{len:10} }}</code>.</p>
+<p>The script for handling something like this would look like:</p>
+<pre><code>var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	customFilter: function(data, named_params) {
+		data = data.sort( ... )
+		return data.slice(named_params.len || 10);
+	}
+}</code></pre>
+<p>I&#8217;m beginning to like the idea of an &#8216;automagic&#8217; filter, however:</p>
+<pre><code>var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	posts.prefilter: data.customFilter,
+	customFilter: function(data, named_params) {
+		return data.sort( ... )
+			.slice(named_params.len || 10);
+	}
+}</code></pre>
+<p>This way, when rendering a section, Usematch will look for <code>section.prefilter</code> and call the function with an arbitary set of params. It simplifies the Usematch markup considerably:</p>
+<pre><code>{{#posts @{len:5,sortBy:'date'} }}</code></pre>
+<p>This looks a lot more readable, no? The downside is that it&#8217;s limited to one filter per section. No big deal I think&#8230; especially since you could manually chain filters anyhow.</p>
+<p>Happy days. :-D</p>
+<p></p>
+</div>
+<div id="sidebar">
+	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>17 Jan 2017</p>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+
