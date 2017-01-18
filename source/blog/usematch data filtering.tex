@@ -1,0 +1,67 @@
+title = Usematch data filtering
+date = 18 Jan 2017 9:00
+metadesc = A review of Usematch's data filtering capabilites
+
+###
+
+{{=[[ ]]=}}With "Usematch":https://github.com/cmroanirgo/usematch v1.1.x (and later) comes the pre filtering support mentioned in the "previous post":intro-to-usematch.html. I'm pretty happy with it and it comes with a few unintended (but cool) side effects.
+
+The basic setup for a data filter looks like this:
+
+bc. var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	customFilter: function(data, named_params) {
+		data = data.sort( ... )
+		return data.slice(named_params.len || 10);
+	}
+}
+
+And to use it from a template:
+
+bc. {{#posts @customFilter{len:5} }} ... {{/posts}}
+
+So far, so good. I felt for ergo-cms, it was just as important to have a filter that could be applied to __any__ kind of list (posts, authors, tags, etc, etc), and this is where the 'automagic' prefilter comes in, and has the format of @section.prefilter@ defined in the data context:
+
+bc. var data = {
+	posts:[
+		{ title: "First Post!", ...}
+		{ title: "Second Post!", ...}
+	],
+	'posts.prefilter: function(data, named_params) {
+		data = data.sort( ... )
+		return data.slice(named_params.len || 10);
+	}
+}
+
+So, now the filter is always invoked, without the template designer doing anything:
+
+bc. {{#posts}} ... {{/posts}}
+
+This of course, can have some grave consequences, and so __by default__ ergo-cms's filters won't do anything, unless a 'parameter' is passed to the filter, which looks like:
+
+bc. {{#posts @{len:10} }} ... {{/posts}}
+
+OR, to get the top 10 newest posts:
+
+bc. {{#posts @{len:10,sortBy:'date,desc'} }} ... {{/posts}}
+
+OR, to get the top 10 tags by usage:
+
+bc. {{#tags @{len:10,sortBy:'length,desc'} }} ... {{/tags}}
+
+I think this a very cool and very powerful feature that is simply missing from most of the cms systems out there. To make this even easier, by default ergo-cms will sort by posts in reverse order (by file date), and tags by their usage and categories by their name. Of course, as a user, these can be overridden easily by simply redefining the filter in your @config.ergo.js@ file:
+
+
+bc. default_fields: {
+	'tags.prefilter' : function(tags, params) { 
+		// do custom stuff here
+		return tags;
+	}
+}
+
+
+
+[[={{ }}=]]

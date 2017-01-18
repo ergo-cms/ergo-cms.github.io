@@ -12,7 +12,7 @@ module.exports = {
 	, verbose:2
 	, debug:-1
 	, log_options: {
-	 	//match_file: /(using jsinf.tex)/
+	 	//match_file: /(themes.tex)/
 	}
 	, default_post_type: "page"
 	, post_types: {
