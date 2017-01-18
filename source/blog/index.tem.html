@@ -1,8 +1,10 @@
+post_type = page
+###
 {{>header.inc.html}}
 <h1>Blog Posts</h1>
 
 <dl>{{#blog}}
-	<dt><a href="{{uri}}">{{title}}</a></dt>
+	<dt><a href="/{{uri}}">{{title}}</a></dt>
 	<dd>{{metadesc}}</dd>{{/blog}}
 </dl>
 

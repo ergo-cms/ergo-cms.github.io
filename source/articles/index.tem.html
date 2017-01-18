@@ -1,9 +1,11 @@
+post_type = page
+###
 {{>header.inc.html}}
 <h1>Articles</h1>
 More articles coming soon!
 
 <dl>{{#article}}
-	<dt><a href="{{uri}}">{{title}}</a></dt>
+	<dt><a href="/{{uri}}">{{title}}</a></dt>
 	<dd>{{metadesc}}</dd>{{/article}}
 </dl>
 
