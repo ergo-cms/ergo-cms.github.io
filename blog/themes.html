@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Themes for ergo-cms</title>
+<meta name="description" content="The quest of theme recycling" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+<div id="banner" class="s post">
+	<div id="nav">
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Themes for ergo-cms</a></h1>
+</div>
+<div class="s post">
+<div class="c">
+<div id="content">
+
+
+<h1><a href="/blog/themes.html">Themes for ergo-cms</a></h1>
+<p>Like all things in the ergo-cms project, I feel it important that the <i>best solution</i> should always be aimed for, rather than just &#8216;getting it to work&#8217;. Unfortunately, when it comes to themes and templates, the internet world is in a bit of a mess. From WordPress themes and Jekyll themes and Start Bootstrap to html5up and beyond, they&#8217;re all great places to start, but only if you know what you&#8217;re doing (or you&#8217;re running WordPress and Jeykll itself). I can&#8217;t recall how many times I&#8217;ve circled this problem without finding a proper &#8216;solution&#8217;. </p>
+<p>I feel that there is <strong>no</strong> solution, because designers and website authors and users and developers all have conflicting ideas on what&#8217;s great for their solution, without thinking of a bigger picture. Hence, a mess.</p>
+<p>Revisiting the problem for the <i>1000th</i> time, I looked at Start Bootstrap and html5up themes again, and realised that although they <em>look</em> fantastic, they are really not very good as a <em>foundation</em> for your website, unless you&#8217;re very conversant with <span class="caps">HTML</span> and <span class="caps">CSS</span>. Let&#8217;s face it, if you&#8217;re reading this, you&#8217;re thinking &#8220;what&#8217;s the problem?&#8221;, but that&#8217;s because you&#8217;re not Joe the Plumber who&#8217;s never needed to know anything about technology other than to <em>use</em> it, like the way they&#8217;d <em>use</em> their plumbing tools. A better example would be my two brothers, who would much rather search through a million themes looking for something that &#8216;just works&#8217; for them. And they complain the whole time about it (of course, this is just a frustration thing on their part).</p>
+<p>So, the holy grail is to:</p>
+<ul>
+	<li>Provide a large swag of themes, without rewriting what others have already spent time with.</li>
+	<li>Provide easy ways for developers, designers and end users to all have their input into look and feel, but must be ready to go, &#8216;out of the box&#8217;, just like a WordPress theme, but without locking the end user out from tweaking things, if they feel up to it.</li>
+</ul>
+<p>This means I&#8217;ll be writing some tools to &#8216;convert&#8217; one theme to another (if such a thing hasn&#8217;t already been done). Due to the popularity of Jekyll, due to github&#8217;s support for it, it might be a good avenue to begin with.</p>
+<h2>The Jackal in Jekyll</h2>
+<p>The problem with any cms is that it will use a different templating engine from anyone else. Even ergo-cms is a perfect example. Having seen the problems in templating with previous incarnations of ergo-cms, I find it humorous to find that Jekyll uses <a href="https://shopify.github.io/liquid/">Liquid</a>, simply because the syntax was very close to what I had written, nearly 10 years ago! That is, it has very <em>geeky</em> syntax of <code>if something ... endif</code>, which I (ironically) took pains to not include in <a href="https://github.com/cmroanirgo/usematch">Usematch</a>! I feel that Mustache&#8217;s <code>{{#content}} ... {{/content}}</code> although having multiple meanings, is easier to work with from a designer and end-user perspective, who may not be quite so technically literate.</p>
+<p>That said, if I wish to &#8216;embrace and extend&#8217; a Jekyll theme, there&#8217;s not a lot of changes that need be made.</p>
+<p>However, the one thing that <em>has</em> popped up when looking at the Liquid templating engine is it&#8217;s support for whitespace removal (which is what Mustache <em>always</em> does) and for which Usematch has a funtionality hole. That is, in a Jekyll template, you can see things like:</p>
+<pre><code>{%- if posts -%}
+	{{title}}
+{%- end if -%}</code></pre>
+<p>What the &#8216;-&#8217; do is to instruct Liquid to strip out whitespace from around the tag itself. I think I&#8217;ll add this as a feature to Usematch in the near future. And looking at it this way, I begin to understand why Mustache does it, by default.</p>
+<p>Until then, and until I make a <em>jekyll-to-usematch</em> converter, I&#8217;m stuck at making templates by hand. <em>:sigh:</em></p>
+<p></p>
+</div>
+<div id="sidebar">
+	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>18 Jan 2017</p>
+</div>
+</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+</div>
+
+</body>
+</html>
+

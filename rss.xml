@@ -7,9 +7,16 @@
 <atom:link href="https://ergo-cms.github.io/rss.xml" rel="self" type="application/rss+xml" />
 <ttl>720</ttl>
 <item>
+<link>https://ergo-cms.github.io/blog/themes.html</link>
+<guid isPermaLink="false">blog/themes.html</guid>
+<pubDate>Wed, 18 Jan 2017 00:00:00 GMT</pubDate>
+<title>Themes for ergo-cms</title>
+<description>The quest of theme recycling</description>
+</item>
+<item>
 <link>https://ergo-cms.github.io/blog/usematch-data-filtering.html</link>
 <guid isPermaLink="false">blog/usematch-data-filtering.html</guid>
-<pubDate>Tue, 17 Jan 2017 13:00:00 GMT</pubDate>
+<pubDate>Tue, 17 Jan 2017 22:00:00 GMT</pubDate>
 <title>Usematch data filtering</title>
 <description>A review of Usematch's data filtering capabilites</description>
 </item>
