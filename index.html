@@ -44,14 +44,21 @@
 <h1 style="text-align:center;margin:2em auto">ergo-cms is in it&#8217;s infancy and will be live soon. You are welcome to follow the code on <a href="https://github.com/ergo-cms/">github</a>.</h1>
 <p>If you&#8217;re impatient, you can try playing with the skeleton file:</p>
 <pre><code>npm install ergo -g
-git clone https://github.com/ergo-cms/ergo-skel.git Blog
+ergo init Blog
 cd Blog
-ergo build &amp;&amp; ergo view --watch</code></pre>
+ergo view -b -w</code></pre>
+<p>Don&#8217;t like the theme? Try Smart Bootstrap&#8217;s &#8216;Clean Blog&#8217;:</p>
+<pre><code>ergo theme install clean-blog
+ergo view -c -b -w</code></pre>
+<p>Switch back the original them? </p>
+<pre><code>ergo theme switch ergo-simple
+ergo view -c -b -w</code></pre>
 <p>Don&#8217;t want to install globally? No problem:</p>
 <pre><code>git clone https://github.com/ergo-cms/ergo-skel.git Blog
 cd Blog
 npm install
-npm run build &amp;&amp; npm run view -- --watch</code></pre>
+npm run ergo -- view -b -w</code></pre>
+<p>Just use <code>npm run ergo --  ...</code> in place of running <code>ergo ...</code> for all commands!</p>
 <p style="margin-top:5em" class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> ∴ is the mathematical symbol for &#8216;therefore&#8217;</p>
 </div>
 </div>

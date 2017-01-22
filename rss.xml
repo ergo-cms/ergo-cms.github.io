@@ -41,19 +41,5 @@
 <title>Using JSINF</title>
 <description>Feedback about using JSINF</description>
 </item>
-<item>
-<link>https://ergo-cms.github.io/articles/jsinf-v1.html</link>
-<guid isPermaLink="false">articles/jsinf-v1.html</guid>
-<pubDate>Tue, 10 Jan 2017 07:16:02 GMT</pubDate>
-<title>JSINF v1.0 Spec [draft]</title>
-<description>Specifications for JSINF, a human readable configuration, v1</description>
-</item>
-<item>
-<link>https://ergo-cms.github.io/articles/faq.html</link>
-<guid isPermaLink="false">articles/faq.html</guid>
-<pubDate>Fri, 22 Jun 2012 00:00:00 GMT</pubDate>
-<title>Frequently Asked Questions</title>
-<description>Get your answers here, in Frequently Asked Questions.</description>
-</item>
 </channel>
 </rss>
