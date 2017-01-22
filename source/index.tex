@@ -17,16 +17,27 @@ h1={margin:2em auto}. ergo-cms is in it's infancy and will be live soon. You are
 If you're impatient, you can try playing with the skeleton file:
 
 bc. npm install ergo -g
-git clone https://github.com/ergo-cms/ergo-skel.git Blog
+ergo init Blog
 cd Blog
-ergo build && ergo view --watch
+ergo view -b -w
+
+Don't like the theme? Try Smart Bootstrap's 'Clean Blog':
+
+bc. ergo theme install clean-blog
+ergo view -c -b -w
+
+Switch back the original them? 
+
+bc. ergo theme switch ergo-simple
+ergo view -c -b -w
 
 Don't want to install globally? No problem:
 
 bc. git clone https://github.com/ergo-cms/ergo-skel.git Blog
 cd Blog
 npm install
-npm run build && npm run view -- --watch
+npm run ergo -- view -b -w
 
+Just use @npm run ergo --  ...@ in place of running @ergo ...@ for all commands!
 
 fn1{margin-top:5em;}(small). ∴ is the mathematical symbol for 'therefore'

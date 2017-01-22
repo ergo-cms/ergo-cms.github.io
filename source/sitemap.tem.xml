@@ -11,12 +11,12 @@
  <priority>0.1</priority>
 </url>
 <url>
- <loc>{{site_url}}articles.html</loc>
+ <loc>{{site_url}}articles/</loc>
  <changefreq>daily</changefreq>
  <priority>1.0</priority>
 </url>
 <url>
- <loc>{{site_url}}blog.html</loc>
+ <loc>{{site_url}}blog/</loc>
  <changefreq>daily</changefreq>
  <priority>1.0</priority>
 </url>

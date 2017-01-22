@@ -12,13 +12,6 @@
 <pubDate>{{date.rss}}</pubDate>
 <title>{{title}}</title>
 <description>{{^metadesc}}{{title}}{{/metadesc}}{{metadesc}}</description>
-</item>{{/blog}}{{#article @{len:10} }}
-<item>
-<link>{{site_url}}{{uri}}</link>
-<guid isPermaLink="{{^guid}}false{{else}}true{{/guid}}">{{^guid}}{{uri}}{{/guid}}{{guid}}</guid>
-<pubDate>{{date.rss}}</pubDate>
-<title>{{title}}</title>
-<description>{{^metadesc}}{{title}}{{/metadesc}}{{metadesc}}</description>
-</item>{{/article}}
+</item>{{/blog}}
 </channel>
 </rss>
