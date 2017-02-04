@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>paginate</title>
+
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s plugin" style="background-image:url(/images/plugin-paginate.jpg)">
+	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> paginate</a></h1>
+</div>
+<div class="s plugin">
+	<div class="c">
+		<div id="content">
+
+
+<h1 id="_top">paginate</h1>
+
+	<p><img align="center" src="/images/plugin-paginate.jpg" alt="" /></p>
+<p>The <code>paginate</code> plugin provides the ability to break a large list of posts into a paginated version. When applied to a single template page, this plugin will generate as many sibling pages as needed. For example, `posts.html` as well as `posts-2.html`, `posts-3.html`, etc. It will also generate `posts-all.html`, which is the page that would be generated <em>without enabling this plugin at all</em>.</p>
+<h2>Installation</h2>
+<p>In an existing ergo project folder:</p>
+<pre><code>ergo plugin install paginate</code></pre>
+<h2>Options </h2>
+<p>You may specify the following options in your <code>config.ergo.js</code>:</p>
+<pre><code>default_fields: {
+	paginate_count:20, // paginate 20 items per page (default is 10)
+	paginate_nextprev: true, // show the previous and next buttons (default is true)
+	...
+}</code></pre>
+<p>The following themes fully support this plugin:</p>
+	<hr/>
+
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-future-imperfect-120.jpg" class="thumb">
+   	 <a href="/themes/future-imperfect.html">
+    	<h3>future-imperfect</h3>
+    	<h4>'Future Imperfect' theme by HTML5 Up</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-clean-blog-120.jpg" class="thumb">
+   	 <a href="/themes/clean-blog.html">
+    	<h3>clean-blog</h3>
+    	<h4>Start Bootstrap's 'Clean Blog' theme</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-ergo-simple-120.jpg" class="thumb">
+   	 <a href="/themes/ergo-simple.html">
+    	<h3>ergo-simple</h3>
+    	<h4>Default theme for ergo-cms sites</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+</dl>
+		</div>
+	</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
+</div>
+
+</body>
+</html>

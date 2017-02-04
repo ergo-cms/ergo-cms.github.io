@@ -6,7 +6,8 @@
 <meta name="description" content="In search of a replacement for the YAML/JSON paradigm" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,24 +18,29 @@
 -->
 </head>
 <body>
-<div id="banner" class="s post">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s post" style="background-image:url(/images/post.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Replacing YAML and JSON with Something</a></h1>
 </div>
 <div class="s post">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
-<h1><a href="/blog/replacing-yaml-and-json.html">Replacing YAML and JSON with Something</a></h1>
-<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world, but perhaps you didn&#8217;t know it (nor care).</p>
+<div class="post">
+  <h1><a href="/blog/replacing-yaml-and-json.html">Replacing YAML and JSON with Something</a></h1>
+	<p>From day 1, I had always used a json-ish implementation of a header at the top of the page, while the rest of the world went with <span class="caps">YAML</span>. I find myself struggling with the usability of both however, particularly with the issues that both can bring to the table. A new paradigm is needed and this post outlines a suggested solution to the craziness that has befallen the world, but perhaps you didn&#8217;t know it (nor care).</p>
 <h2 id="json">The illogical <span class="caps">JSON</span> and Javascript objects</h2>
 <p>In a fair world, <span class="caps">JSON</span> would never have been created.</p>
 <p>It sounds strange to read it, but it&#8217;s true. <span class="caps">JSON</span> was developed as a way of normalising what everyone in Javascript was doing anyway:</p>
@@ -122,19 +128,62 @@ This is a mini description that describes who I am and what I've done. See "Abou
 <p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> To be fair. I also bash Markdown just as much. It&#8217;s <strong>only</strong> place in the world should in GitHub <span class="caps">README</span>&#8216;s or super-ultra-boring-to-read automated documentation suites. I&#8217;ve never understood why it became so popular, especially since many were using WikiText before then. To me, WikiText is much easier to read. Except Textile, of course. I&#8217;ve seen the light wrt Textile. I &lt;3 Textile. Too bad <a href="https://github.com/blog/2115-upgrading-your-textile-posts-to-markdown">GitHub has become evil and now hates Textile</a>, because they&#8217;re on the &#8216;I love Jekyll&#8217; boat, apparently. Whateva. This post was written in Textile and is posted on github pages. I win ;)</p>
 <p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a> WordPress has finally begun to address the issue with a new project. I&#8217;m tired of waiting for others to solve my issues, so here I am writing ergo-cms.</p>
 <p class="small footnote" id="fn3"><a href="#fnr3"><sup>3</sup></a> <a href="https://en.oxforddictionaries.com/definition/kitsch">Considered to be in poor taste but appreciated in an ironic or knowing way</a></p>
+	<div class="clear"></div>
+	<ul class="stats">
+		
+		
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a> 
+		
+		
+		
+		
+		
+		<a href="https://github.com/cmroanirgo"><i class="flaticon-github"></i></a>
+	</div>
 </div>
+<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+
+	<a href="/blog/using-jsinf.html" class="button">&lt;&lt; Previous</a>
+
+
+</div>
+
+
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = 'ergo-cms';
+	var disqus_identifier = 'blog/replacing-yaml-and-json.html';
+	var disqus_url = 'https://ergo-cms.github.io/blog/replacing-yaml-and-json.html';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+
+</div> <!--content-->
 <div id="sidebar">
-	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><img id="author_img" src="/images/avatar-cmroanirgo-128.jpg" /></p>
 	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
 	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
 	<p>9 Jan 2017</p>
-</div>
-</div>
+
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>

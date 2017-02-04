@@ -6,7 +6,8 @@
 <meta name="description" content="This is a the home page for ergo, a beautiful cms" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,22 +18,27 @@
 -->
 </head>
 <body>
-<div id="banner" class="s home">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s home" style="background-image:url(/images/home.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Ergo</a></h1>
 </div>
 <div class="s home">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
+<h1><a href="/index.html">Ergo</a></h1>
 <dl>
 	<dt>Ergo scribo.</dt>
 	<dd>Therefore, I Write.</dd>
@@ -41,8 +47,9 @@
 </dl>
 <p></p>
 <p style="text-align:center">∴ </p>
-<h1 style="text-align:center;margin:2em auto">ergo-cms is in it&#8217;s infancy and will be live soon. You are welcome to follow the code on <a href="https://github.com/ergo-cms/">github</a>.</h1>
-<p>If you&#8217;re impatient, you can try playing with the skeleton file:</p>
+<p>Ergo is easy. It is light. It is fast. It is ∴ effortless. This site is built with it, with minimal fuss, but amazing control. Check out the <a href="/articles.html">Docs</a>, <a href="/themes.html">Themes</a> or <a href="/plugins.html">Plugins</a>.</p>
+<h2>Installation and Getting Started</h2>
+<p>Try playing with the skeleton file:</p>
 <pre><code>npm install ergo -g
 ergo init Blog
 cd Blog
@@ -60,13 +67,15 @@ npm install
 npm run ergo -- view -b -w</code></pre>
 <p>Just use <code>npm run ergo --  ...</code> in place of running <code>ergo ...</code> for all commands!</p>
 <p style="margin-top:5em" class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> ∴ is the mathematical symbol for &#8216;therefore&#8217;</p>
-</div>
-</div>
+
+
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>

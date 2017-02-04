@@ -6,7 +6,8 @@
 <meta name="description" content="An introduction on ergo-cms" />
 <meta name="keywords" content="about" />
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,20 +18,24 @@
 -->
 </head>
 <body>
-<div id="banner" class="s aboutpage">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s aboutpage" style="background-image:url(/images/page.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> About ergo-cms</a></h1>
 </div>
 <div class="s aboutpage">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
 <h1><a href="/about.html">About ergo-cms</a></h1>
@@ -79,13 +84,17 @@ That code exists still, but is horrible and clunky and not extensible.<sup class
 <hr />
 <p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> I actually wrote it on a Galaxy Tab 2 7&#8243; while backpacking through Spain, on a rooted Android with a debian/xfce platform &amp; jacked in with a mini keyboard attachment. Fun times.</p>
 <p class="small footnote" id="fn2"><a href="#fnr2"><sup>2</sup></a>  The continued use of ruby dismays me greatly. Ruby and I don&#8217;t get along. We never have. I tried several times. Having started with assembler (motorla/intel), I don&#8217;t see the need for such a language. If you love it, great. I don&#8217;t, and I never will. Assembler doesn&#8217;t need hours of frustration to get started, nor does Pascal, Javascript, C++ (ok, there are bits of frustration), Basic nor C# (and a whole slew of other languages). Ruby, in my experience, is full of frustration and pointlessness. Node.js on the other hand seems to be the breath of fresh air that Ruby failed to deliver. <i>(Now, where are those punch cards, I had laying around&#8230;?)</i> Despite all my bashing of ruby, there&#8217;s one thing that sprang out of it: Textile. &lt;3.</p>
-</div>
-</div>
+<ul class="stats">
+	
+	
+</ul>
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>

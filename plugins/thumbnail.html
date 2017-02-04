@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>thumbnail</title>
+
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s plugin" style="background-image:url(/images/plugin-thumbnail.jpg)">
+	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> thumbnail</a></h1>
+</div>
+<div class="s plugin">
+	<div class="c">
+		<div id="content">
+
+
+<h1 id="_top">thumbnail</h1>
+
+	<p><img align="center" src="/images/plugin-thumbnail.jpg" alt="" /></p>
+<p>This plugin provides the ability to rescale an image, and provide support for responsive images, using <code>srcset</code> attribute. The images are automatically generated as part of the build process. </p>
+<p>Note that this plugin makes use of two differing image libraries. The first is a 100% Javascript image library (Jimp), which is significantly slower than native libraries, but is more likely to work across different machine architectures. The second library (Sharp) is much faster, but may encounter installation issues. If the installation of Sharp fails, then Jimp is used automatically as a fallback. 
+Initial testing shows that Sharp is around 5 times faster at processing images than Jimp.</p>
+<p>When this plugin is enabled, most images (except header images), will use either a thumbnail version, or a responsive version. You should not notice any visual differences when this plugin is active. </p>
+<p>When this plugin is disabled, all images will revert to using their default hi-res version.</p>
+<h2>Installation</h2>
+<p>In an existing ergo project folder:</p>
+<pre><code>ergo plugin install thumbnail
+cd _plugins/thumbnail
+npm install --production</code></pre>
+<h2>Options </h2>
+<p>You may specify the following options in your `config.ergo.js`:</p>
+<pre><code>default_fields: {
+	thumb_defwidth:512, // default thumbnail size (default is 512, but never used by themes, by default)
+	srcset_origwidth: -1, // size of 'hi-res' images used in srcset. By default hi-res are NOT used
+	srcset_widths: "256,512,1152", // list of image sizes to generate (not used by themes)
+	images_path: '/images'		// the path where images exist (in the output folder) &amp; relative to base url for both *source* and *thumbnails*.
+	...
+}</code></pre>
+<p>The following themes fully support this plugin:</p>
+	<hr/>
+
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-future-imperfect-120.jpg" class="thumb">
+   	 <a href="/themes/future-imperfect.html">
+    	<h3>future-imperfect</h3>
+    	<h4>'Future Imperfect' theme by HTML5 Up</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-clean-blog-120.jpg" class="thumb">
+   	 <a href="/themes/clean-blog.html">
+    	<h3>clean-blog</h3>
+    	<h4>Start Bootstrap's 'Clean Blog' theme</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+	<div class="post clear bordered">
+    	<img src="/images/theme-ergo-simple-120.jpg" class="thumb">
+   	 <a href="/themes/ergo-simple.html">
+    	<h3>ergo-simple</h3>
+    	<h4>Default theme for ergo-cms sites</h4></a>
+    	<p class="meta">Posted by <a href="/authors.html#craig">craig</a> on 4 Feb 2017</p>
+	</div>
+
+</dl>
+		</div>
+	</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
+</div>
+
+</body>
+</html>

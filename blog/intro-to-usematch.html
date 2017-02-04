@@ -6,7 +6,8 @@
 <meta name="description" content="A new templating engine, extending Mustache" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,24 +18,29 @@
 -->
 </head>
 <body>
-<div id="banner" class="s post">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s post" style="background-image:url(/images/post.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Intro to Usematch</a></h1>
 </div>
 <div class="s post">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
-<h1><a href="/blog/intro-to-usematch.html">Intro to Usematch</a></h1>
-<p>I was unhappy with the cheap and nasty, <i>roll-it-your-own</i> templating engine that I&#8217;d put up with in previous incarnations of ergo-cms. I&#8217;d seen quite a lot of clamour about Mustache and how great it is and was interested to see if it could drop into ergo-cms very easily, while still retaining the feature set that I&#8217;d become used to having.</p>
+<div class="post">
+  <h1><a href="/blog/intro-to-usematch.html">Intro to Usematch</a></h1>
+	<p>I was unhappy with the cheap and nasty, <i>roll-it-your-own</i> templating engine that I&#8217;d put up with in previous incarnations of ergo-cms. I&#8217;d seen quite a lot of clamour about Mustache and how great it is and was interested to see if it could drop into ergo-cms very easily, while still retaining the feature set that I&#8217;d become used to having.</p>
 <p>Unfortunately, it fell flat. <i>:sigh:</i></p>
 <p>Although a popular engine, Mustache is surprisingly minimalist in quite a few areas, particularly that of extensibility, which in my eyes, is always a no-go. Then again, that&#8217;s the way those crazy ruby guys go, and so it shouldn&#8217;t have come as a surprise to me that the feature set of Mustache was rather locked down.</p>
 <p>Looking at the code of Mustache, it seemed quite clear it was going to be that way forever when I saw this little gem:</p>
@@ -103,19 +109,64 @@ console.log(usematch.render('{{title #toUpper}}', data));
 <p>This looks a lot more readable, no? The downside is that it&#8217;s limited to one filter per section. No big deal I think&#8230; especially since you could manually chain filters anyhow.</p>
 <p>Happy days. :-D</p>
 <p></p>
+	<div class="clear"></div>
+	<ul class="stats">
+		
+		
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a> 
+		
+		
+		
+		
+		
+		<a href="https://github.com/cmroanirgo"><i class="flaticon-github"></i></a>
+	</div>
 </div>
+<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+
+	<a href="/blog/usematch-data-filtering.html" class="button">&lt;&lt; Previous</a>
+
+
+	<a href="/blog/using-jsinf.html" class="button">Next &gt;&gt;</a>
+
+</div>
+
+
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = 'ergo-cms';
+	var disqus_identifier = 'blog/intro-to-usematch.html';
+	var disqus_url = 'https://ergo-cms.github.io/blog/intro-to-usematch.html';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+
+</div> <!--content-->
 <div id="sidebar">
-	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><img id="author_img" src="/images/avatar-cmroanirgo-128.jpg" /></p>
 	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
 	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
 	<p>17 Jan 2017</p>
-</div>
-</div>
+
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>

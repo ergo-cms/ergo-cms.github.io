@@ -6,7 +6,8 @@
 <meta name="description" content="A review of Usematch's data filtering capabilites" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,24 +18,29 @@
 -->
 </head>
 <body>
-<div id="banner" class="s post">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s post" style="background-image:url(/images/post.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Usematch data filtering</a></h1>
 </div>
 <div class="s post">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
-<h1><a href="/blog/usematch-data-filtering.html">Usematch data filtering</a></h1>
-<p>With <a href="https://github.com/cmroanirgo/usematch">Usematch</a> v1.1.x (and later) comes the pre filtering support mentioned in the <a href="intro-to-usematch.html">previous post</a>. I&#8217;m pretty happy with it and it comes with a few unintended (but cool) side effects.</p>
+<div class="post">
+  <h1><a href="/blog/usematch-data-filtering.html">Usematch data filtering</a></h1>
+	<p>With <a href="https://github.com/cmroanirgo/usematch">Usematch</a> v1.1.x (and later) comes the pre filtering support mentioned in the <a href="intro-to-usematch.html">previous post</a>. I&#8217;m pretty happy with it and it comes with a few unintended (but cool) side effects.</p>
 <p>The basic setup for a data filter looks like this:</p>
 <pre><code>var data = {
 	posts:[
@@ -75,19 +81,64 @@
 	}
 }</code></pre>
 <p></p>
+	<div class="clear"></div>
+	<ul class="stats">
+		
+		
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a> 
+		
+		
+		
+		
+		
+		<a href="https://github.com/cmroanirgo"><i class="flaticon-github"></i></a>
+	</div>
 </div>
+<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+
+	<a href="/blog/themes.html" class="button">&lt;&lt; Previous</a>
+
+
+	<a href="/blog/intro-to-usematch.html" class="button">Next &gt;&gt;</a>
+
+</div>
+
+
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = 'ergo-cms';
+	var disqus_identifier = 'blog/usematch-data-filtering.html';
+	var disqus_url = 'https://ergo-cms.github.io/blog/usematch-data-filtering.html';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+
+</div> <!--content-->
 <div id="sidebar">
-	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><img id="author_img" src="/images/avatar-cmroanirgo-128.jpg" /></p>
 	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
 	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
 	<p>18 Jan 2017</p>
-</div>
-</div>
+
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>

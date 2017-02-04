@@ -6,7 +6,8 @@
 <meta name="description" content="Feedback about using JSINF" />
 
 <link href="/styles.css" rel="stylesheet" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="Articles Feed" href="/rss.xml" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
 <meta name="viewport" content="width=device-width,maximum-scale=1.0" />
 <meta property="author" content="craig" />
 <!-- 
@@ -17,24 +18,29 @@
 -->
 </head>
 <body>
-<div id="banner" class="s post">
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s post" style="background-image:url(/images/post.jpg)">
 	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
 	<ul>
 	<li><a href="/">home</a></li>
-	<li><a href="/articles/">articles</a></li>
-	<li><a href="/blog/">blog</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
 	<li><a href="/about.html">about</a></li>
 </ul>
 	</div>
 	<h1 id="title"><a href="#content"><b>∴</b> Using JSINF</a></h1>
 </div>
 <div class="s post">
-<div class="c">
-<div id="content">
+	<div class="c">
+		<div id="content">
 
 
-<h1><a href="/blog/using-jsinf.html">Using JSINF</a></h1>
-<p>Well, it&#8217;s done. I&#8217;ve spent a couple of days writing <a href="https://github.com/cmroanirgo/jsinf"><em><span class="caps">JSINF</span></em></a> and was pleasantly surprised at how <em>easy</em> I could drop it in as a replacement for the <span class="caps">JSON</span> headers I had been using. But not only that, because <span class="caps">JSINF</span> supports a &#8216;default block&#8217;, I was easily able to decode the content in one easy swoop! So, no more <span class="caps">YAML</span> or <span class="caps">JSON</span> for me!</p>
+<div class="post">
+  <h1><a href="/blog/using-jsinf.html">Using JSINF</a></h1>
+	<p>Well, it&#8217;s done. I&#8217;ve spent a couple of days writing <a href="https://github.com/cmroanirgo/jsinf"><em><span class="caps">JSINF</span></em></a> and was pleasantly surprised at how <em>easy</em> I could drop it in as a replacement for the <span class="caps">JSON</span> headers I had been using. But not only that, because <span class="caps">JSINF</span> supports a &#8216;default block&#8217;, I was easily able to decode the content in one easy swoop! So, no more <span class="caps">YAML</span> or <span class="caps">JSON</span> for me!</p>
 <p>Honestly, I thought I&#8217;d have a couple of gotchas here or there. The <em>worst</em> thing (if that&#8217;s really such a thing) is that it&#8217;s a bit of a <em>mind set</em> to get around <span class="caps">NOT</span> using quotes to describe the fields. But, for the better, this blog (&amp; the whole ergo-cms website) is dogfooding<sup class="footnote" id="fnr1"><a href="#fn1">1</a></sup> itself.</p>
 <p>This is what this page&#8217;s header now looks like:</p>
 <pre><code>title = Dogfooding JSINF
@@ -50,19 +56,64 @@ date = 10 Jan 2017
 <p>It&#8217;s so easy it&#8217;s scary! Now it&#8217;s time to go and create a bootstrap skeleton and add a modicum of theme support&#8230;</p>
 <hr />
 <p class="small footnote" id="fn1"><a href="#fnr1"><sup>1</sup></a> For those who don&#8217;t know what <em>dog fooding</em> is, it&#8217;s an expression to indicate that it&#8217;s using itself to generate itself.</p>
+	<div class="clear"></div>
+	<ul class="stats">
+		
+		
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a> 
+		
+		
+		
+		
+		
+		<a href="https://github.com/cmroanirgo"><i class="flaticon-github"></i></a>
+	</div>
 </div>
+<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+
+	<a href="/blog/intro-to-usematch.html" class="button">&lt;&lt; Previous</a>
+
+
+	<a href="/blog/replacing-yaml-and-json.html" class="button">Next &gt;&gt;</a>
+
+</div>
+
+
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = 'ergo-cms';
+	var disqus_identifier = 'blog/using-jsinf.html';
+	var disqus_url = 'https://ergo-cms.github.io/blog/using-jsinf.html';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+
+</div> <!--content-->
 <div id="sidebar">
-	<p><img id="author_img" src="/images/author.jpg" /></p>
+	<p><img id="author_img" src="/images/avatar-cmroanirgo-128.jpg" /></p>
 	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
 	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
 	<p>10 Jan 2017</p>
-</div>
-</div>
+
+		</div>
+	</div>
 </div>
 
 
 <div id="footer" class="s">
-	<div class="c"><a href="https://ergo-cms.github.io">∴ ergo-cms</a> is a <i>beautiful</i> cms. | <a href="/rss.xml">Feed</a> | <a href="/sitemap.xml">Sitemap</a></div>
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
 </div>
 
 </body>
