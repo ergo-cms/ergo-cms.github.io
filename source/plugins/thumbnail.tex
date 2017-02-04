@@ -1,0 +1,45 @@
+title = thumbnail
+date = 2017-2-4 16:20
+list_type = all.plugins.thumbnail
+image = plugin-thumbnail.jpg
+###
+
+!=/images/{{image}}!
+
+This plugin provides the ability to rescale an image, and provide support for responsive images, using @srcset@ attribute. The images are automatically generated as part of the build process. 
+
+Note that this plugin makes use of two differing image libraries. The first is a 100% Javascript image library (Jimp), which is significantly slower than native libraries, but is more likely to work across different machine architectures. The second library (Sharp) is much faster, but may encounter installation issues. If the installation of Sharp fails, then Jimp is used automatically as a fallback. 
+Initial testing shows that Sharp is around 5 times faster at processing images than Jimp.
+
+When this plugin is enabled, most images (except header images), will use either a thumbnail version, or a responsive version. You should not notice any visual differences when this plugin is active. 
+
+When this plugin is disabled, all images will revert to using their default hi-res version.
+
+h2. Installation
+
+In an existing ergo project folder:
+
+bc.
+ergo plugin install thumbnail
+cd _plugins/thumbnail
+npm install --production
+
+
+h2. Options 
+
+You may specify the following options in your `config.ergo.js`:
+
+bc.
+default_fields: {
+	thumb_defwidth:512, // default thumbnail size (default is 512, but never used by themes, by default)
+	srcset_origwidth: -1, // size of 'hi-res' images used in srcset. By default hi-res are NOT used
+	srcset_widths: "256,512,1152", // list of image sizes to generate (not used by themes)
+	images_path: '/images'		// the path where images exist (in the output folder) & relative to base url for both *source* and *thumbnails*.
+	...
+}
+
+
+The following themes fully support this plugin:
+
+
+

@@ -1,0 +1,27 @@
+title = ergo-simple
+subtitle = Default theme for ergo-cms sites
+date = 2017-2-4 15:00
+image = theme-ergo-simple.jpg
+plugins = nextprev,paginate,thumbnail
+layouts = post,page,homepage,lists
+###
+
+!=/images/{{image}}!
+
+This is the theme used by "ergo-cms.gthub.io":https://ergo-cms.gthub.io and is installed by default with the default skeleton package when you run @ergo init [folder]@.
+
+h2. Supported Plugins
+
+<ul>{{#plugins @split}}<li><a href="/plugins/{{.}}.html">{{.}}</a></li>{{/plugins}}</ul>
+
+h2. Supported layouts
+
+<ul>{{#layouts @split}}<li>{{.}}</li>{{/layouts}}</ul>
+
+h2. Installation
+
+bc. ergo theme install {{title}}
+
+
+
+

@@ -1,0 +1,35 @@
+title = paginate
+date = 2017-2-4 18:00
+list_type = all.plugins.paginate
+image = plugin-paginate.jpg
+
+###
+
+!=/images/{{image}}!
+
+The @paginate@ plugin provides the ability to break a large list of posts into a paginated version. When applied to a single template page, this plugin will generate as many sibling pages as needed. For example, `posts.html` as well as `posts-2.html`, `posts-3.html`, etc. It will also generate `posts-all.html`, which is the page that would be generated _without enabling this plugin at all_.
+
+h2. Installation
+
+In an existing ergo project folder:
+
+bc. ergo plugin install paginate
+
+
+h2. Options 
+
+You may specify the following options in your @config.ergo.js@:
+
+bc.
+default_fields: {
+	paginate_count:20, // paginate 20 items per page (default is 10)
+	paginate_nextprev: true, // show the previous and next buttons (default is true)
+	...
+}
+
+
+
+The following themes fully support this plugin:
+
+
+

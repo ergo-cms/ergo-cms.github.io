@@ -1,0 +1,22 @@
+
+.home #content dl { text-align:center;}
+.home #content dd { margin-left:0;}
+.home #content h1 a,h2 a,h3 a,h4 a{color:#822;}
+.home #content h1:first-child { display: none;}
+.post .c { width:90%; position:relative;}
+.post #content { display: inline-block; width: 85%; vertical-align: top}
+.post #sidebar { display: inline-block; width: 14%; vertical-align: top;
+		font-family: arial,sans-serif;
+		font-weight:200;
+		text-align:right; font-size:9pt; padding: 10em 1em;}
+.post #sidebar * {display:block; margin-right: 0.5em}
+.post #sidebar img#author_img { width:128px; height:auto; border-radius: 64px; margin-right: 0.0em; text-align: center;box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2); margin-bottom: 2em; }
+
+/* override the banner images to show the 'generic' one*/
+#banner.theme { background-image:url('/images/theme.jpg') !important;}
+#banner.plugin { background-image:url('/images/plugin.jpg') !important;}
+
+.theme #content img:first-child,
+.plugin #content img:first-child { padding:0; box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.5); };
+
+
