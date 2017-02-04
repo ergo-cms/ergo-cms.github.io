@@ -102,7 +102,7 @@ module.exports = {
 				// uncomment this to track authors 
 				author: { as: 'authors', base_name:'all' }, // Also, change 'author_url to '/authors.html', above
 				plugins: { as: 'plugins', base_name:'all', generate_html:false},
-				layouts: { as: 'layouts', base_name:'all'},
+				layouts: { as: 'layouts', base_name:'all', generate_html:false},
 			}
 		}
 	}
