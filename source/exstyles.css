@@ -8,8 +8,8 @@
 .post #sidebar { display: inline-block; width: 14%; vertical-align: top;
 		font-family: arial,sans-serif;
 		font-weight:200;
-		text-align:right; font-size:9pt; padding: 10em 1em;}
-.post #sidebar * {display:block; margin-right: 0.5em}
+		text-align:right; font-size:9pt; padding: 10em 0 0 1em;}
+/*.post #sidebar * {display:block;}*/
 .post #sidebar img#author_img { width:128px; height:auto; border-radius: 64px; margin-right: 0.0em; text-align: center;box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2); margin-bottom: 2em; }
 
 /* override the banner images to show the 'generic' one*/
@@ -17,6 +17,13 @@
 #banner.plugin { background-image:url('/images/plugin.jpg') !important;}
 
 .theme #content img:first-child,
-.plugin #content img:first-child { padding:0; box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.5); };
+.plugin #content img:first-child { padding:0; box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.5); }
 
+
+@media screen and (max-width:768px), screen and (max-device-width:768px) {
+	.post .c { width:95%; position:relative;}
+	.post #content { display: block; width: 100%;}
+	.post #sidebar { display: block; width: 100%; text-align:left; padding-top: 2em}
+	.post #sidebar img#author_img { float: left;}
+}
 
