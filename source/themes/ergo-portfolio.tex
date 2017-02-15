@@ -1,0 +1,27 @@
+title = ergo-portfolio
+subtitle = Portfolio theme for ergo-cms
+date = 2017-2-15 15:00
+image = theme-ergo-portfolio.jpg
+plugins = nextprev,paginate,thumbnail
+layouts = post,page,homepage,lists
+###
+
+!=/images/{{image}}!
+
+This "ergo-cms":https://ergo-cms.gthub.io theme was inspired by the site "www.idahoffart.dk":http://www.idahoffart.dk and is highly suitable for projects and artistic works.
+
+h2. Supported Plugins
+
+<ul>{{#plugins @split}}<li><a href="/plugins/{{.}}.html">{{.}}</a></li>{{/plugins}}</ul>
+
+h2. Supported layouts
+
+<ul>{{#layouts @split}}<li>{{.}}</li>{{/layouts}}</ul>
+
+h2. Installation
+
+bc. ergo theme install {{title}}
+
+
+
+
