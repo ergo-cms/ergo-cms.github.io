@@ -30,14 +30,13 @@ So, call me crazy, I reinvented the wheel. It's called *InvisCSS* and it's avail
 * Easier to change colors and styles to suit your needs. 
 * No requirements on external JS libraries.
 * Built with LESS, ships as CSS.
-* Themes, to get you started (also as easily overridable LESS) in min and normal sizings.
+* Themes, to get you started (also as easily overridable LESS) in min and normal sizings. See "cmroanirgo.github.io/inviscss/demo/themes.html":https://cmroanirgo.github.io/inviscss/demo/themes.html
 * Flexbox layout.
 * IE10 and everything else.
 
 The flexbox layout is a modified version of "flexboxgrid":http://flexboxgrid.com/ (so that it works more like Bootstrap), &amp; uses Bootstrap's naming conventions, eg. @col-sm-10 col-md-8 col-lg-6@ to give very powerful layouts. Unfortunately, this, more than most, is where the CSS bloat begins, but I feel that the benefits outweigh the need to be a *minimal* CSS library. At the moment, InvisCSS is about 40Kb zipped without trying too hard, but has plenty room for improvement, since there are still a lot of legacy browsers out there that don't fully support the latest Flex specs. As this improves, the size will plummet, because most of the CSS is in providing @-webkit-@ and @-ms-@ wrappers (thanks to less-plugin-autoprefix). As such, browser support is pretty good with most of the browsers (including mobile), being amply supported.
 
-Here's the same page on a narrow screen:
-
+Here's the same page on a narrow screen/mobile:
 
 !(shadow)=/images/ergo-admin2.png!
 
