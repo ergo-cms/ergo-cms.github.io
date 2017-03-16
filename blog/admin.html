@@ -42,7 +42,7 @@
 <div class="post">
   <h1><a href="/blog/admin.html">Admin Interface for ergo-cms</a></h1>
 	<p>There has been quite a lot of work going on behind the scenes to develop a web-based administration interface for Ergo-<span class="caps">CMS</span>. This is still ongoing, but I thought I little <strong>teaser</strong> about the solution would be nice. This is what the UI looks like today:</p>
-<p><img style="padding:0" align="center" class="shadow" src="/images/ergo-admin1.png" alt="" /></p>
+<p><img class="shadow" align="center" src="/images/ergo-admin1.png" alt="" /></p>
 <p>As you can see, there&#8217;s quite a lot of potential in the project. You can track it online on <a href="https://github.com/ergo-cms/ergo-admin">github.com/ergo-cms/ergo-admin</a></p>
 <h2>Choice of <span class="caps">CSS</span> libary</h2>
 <p>One of the main things that cropped up is the lack of a good css library that coped with the basic framework required for an admin interface that <em>didn&#8217;t also involve massive lock-in</em>. That is, I started off using Bootstrap as the basis and was unhappy with the result, mainly because of the horrible <span class="caps">HTML</span> bloat that&#8217;s needed when dealing with Bootstrap in general. </p>
@@ -66,6 +66,8 @@
 	<li><span class="caps">IE10</span> and everything else.</li>
 </ul>
 <p>The flexbox layout is a modified version of <a href="http://flexboxgrid.com/">flexboxgrid</a> (so that it works more like Bootstrap), &amp; uses Bootstrap&#8217;s naming conventions, eg. <code>col-sm-10 col-md-8 col-lg-6</code> to give very powerful layouts. Unfortunately, this, more than most, is where the <span class="caps">CSS</span> bloat begins, but I feel that the benefits outweigh the need to be a <strong>minimal</strong> <span class="caps">CSS</span> library. At the moment, InvisCSS is about 40Kb zipped without trying too hard, but has plenty room for improvement, since there are still a lot of legacy browsers out there that don&#8217;t fully support the latest Flex specs. As this improves, the size will plummet, because most of the <span class="caps">CSS</span> is in providing <code>-webkit-</code> and <code>-ms-</code> wrappers (thanks to less-plugin-autoprefix). As such, browser support is pretty good with most of the browsers (including mobile), being amply supported.</p>
+<p>Here&#8217;s the same page on a narrow screen:</p>
+<p><img class="shadow" align="center" src="/images/ergo-admin2.png" alt="" /></p>
 	<div class="clear"></div>
 	<ul class="stats">
 		
