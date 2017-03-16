@@ -1,0 +1,40 @@
+title = Admin Interface for ergo-cms
+date = 16 March 2017 22:00
+metadesc = A user friendly way to edit your site
+screenshot1 = ergo-admin1.png
+###
+
+There has been quite a lot of work going on behind the scenes to develop a web-based administration interface for Ergo-CMS. This is still ongoing, but I thought I little *teaser* about the solution would be nice. This is what the UI looks like today:
+
+!=(shadow){padding:0}/images/{{{screenshot1}}}!
+
+As you can see, there's quite a lot of potential in the project. You can track it online on "github.com/ergo-cms/ergo-admin":https://github.com/ergo-cms/ergo-admin
+
+h2. Choice of CSS libary
+
+One of the main things that cropped up is the lack of a good css library that coped with the basic framework required for an admin interface that _didn't also involve massive lock-in_. That is, I started off using Bootstrap as the basis and was unhappy with the result, mainly because of the horrible HTML bloat that's needed when dealing with Bootstrap in general. 
+
+It's a problem that I've been looking at for over 2 years now and several months back started a CSS library that was based on Yahoo's "purecss":https://purecss.io/. It was a failure. It wasn't responsive enough and had too many unknown quirks.
+
+This is the list of CSS libraries I looked at and discarded:
+
+* "Bootstrap":https://getbootstrap.com. Bloated HTML. Hard to 'recolor'. Requires jQuery.
+* "PureCSS":https://purecss.io/. Somewhat bloated HTML, but LOTS of branding in the HTML. Hard to override.
+* "Foundation":http://foundation.zurb.com/sites/docs/. Bloated HTML. Just didn't like the styling and had lots of 'what the?' moments.
+* "PicnicCSS":https://picnicss.com/. Pretty awesome really. Seemed to miss a few too many features though.
+* *Anything* SASS, fat, bloated, 'just install this, then this, then run this'. Ugh. CSS Frameworks should provide... CSS.
+
+So, call me crazy, I reinvented the wheel. It's called *InvisCSS* and it's available on "github.com/cmroanirgo/inviscss":https://github.com/cmroanirgo/inviscss. It is a responsive mobile first approach, with the main requirement of clean HTML, as if you were manually styling the CSS yourself. Admittedly, this can lead to a little CSS bloat, but that's far better than bloat on each and every page, IMHO. It has a script file, but makes no use of jQuery or company. Other features of "InvisCSS":https://github.com/cmroanirgo/inviscss are:
+
+* Clean HTML
+* Easier to change colors and styles to suit your needs. 
+* No requirements on external JS libraries.
+* Built with LESS, ships as CSS.
+* Themes, to get you started (also as easily overridable LESS) in min and normal sizings.
+* Flexbox layout.
+* IE10 and everything else.
+
+The flexbox layout is a modified version of "flexboxgrid":http://flexboxgrid.com/ (so that it works more like Bootstrap), &amp; uses Bootstrap's naming conventions, eg. @col-sm-10 col-md-8 col-lg-6@ to give very powerful layouts. Unfortunately, this, more than most, is where the CSS bloat begins, but I feel that the benefits outweigh the need to be a *minimal* CSS library. At the moment, InvisCSS is about 40Kb zipped without trying too hard, but has plenty room for improvement, since there are still a lot of legacy browsers out there that don't fully support the latest Flex specs. As this improves, the size will plummet, because most of the CSS is in providing @-webkit-@ and @-ms-@ wrappers (thanks to less-plugin-autoprefix). As such, browser support is pretty good with most of the browsers (including mobile), being amply supported.
+
+
+
