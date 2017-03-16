@@ -1,12 +1,12 @@
 title = Admin Interface for ergo-cms
 date = 16 March 2017 22:00
 metadesc = A user friendly way to edit your site
-screenshot1 = ergo-admin1.png
+
 ###
 
 There has been quite a lot of work going on behind the scenes to develop a web-based administration interface for Ergo-CMS. This is still ongoing, but I thought I little *teaser* about the solution would be nice. This is what the UI looks like today:
 
-!=(shadow){padding:0}/images/{{{screenshot1}}}!
+!(shadow)=/images/ergo-admin1.png!
 
 As you can see, there's quite a lot of potential in the project. You can track it online on "github.com/ergo-cms/ergo-admin":https://github.com/ergo-cms/ergo-admin
 
@@ -36,5 +36,8 @@ So, call me crazy, I reinvented the wheel. It's called *InvisCSS* and it's avail
 
 The flexbox layout is a modified version of "flexboxgrid":http://flexboxgrid.com/ (so that it works more like Bootstrap), &amp; uses Bootstrap's naming conventions, eg. @col-sm-10 col-md-8 col-lg-6@ to give very powerful layouts. Unfortunately, this, more than most, is where the CSS bloat begins, but I feel that the benefits outweigh the need to be a *minimal* CSS library. At the moment, InvisCSS is about 40Kb zipped without trying too hard, but has plenty room for improvement, since there are still a lot of legacy browsers out there that don't fully support the latest Flex specs. As this improves, the size will plummet, because most of the CSS is in providing @-webkit-@ and @-ms-@ wrappers (thanks to less-plugin-autoprefix). As such, browser support is pretty good with most of the browsers (including mobile), being amply supported.
 
+Here's the same page on a narrow screen:
 
+
+!(shadow)=/images/ergo-admin2.png!
 
