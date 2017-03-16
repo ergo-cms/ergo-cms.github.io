@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin Interface for ergo-cms</title>
+<meta name="description" content="A user friendly way to edit your site" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0" />
+<meta property="author" content="craig" />
+
+<link href="/styles.css" rel="stylesheet" type="text/css" />
+<link href="/exstyles.css" rel="stylesheet" type="text/css" />
+
+<link rel="alternate" type="application/rss+xml" title="News &amp; Articles Feed" href="/rss.xml" />
+<!-- 
+             ____  ____   ___   __         ___  _  _  ____ 
+      O     (  __)(  _ \ / __) /  \  ___  / __)( \/ )/ ___)
+             ) _)  )   /( (_ \(  O )(___)( (__ / \/ \\___ \
+    O   O   (____)(__\_) \___/ \__/       \___)\_)(_/(____/
+-->
+</head>
+<body>
+	<!-- The 'extracss' has been added here -->
+<div id="banner" class="s post" style="background-image:url(/images/post.jpg)">
+	<div id="nav">
+	<!-- change your menu at _partials/menu.tex -->
+	<ul>
+	<li><a href="/">home</a></li>
+	<li><a href="/articles.html">articles</a></li>
+	<li><a href="/themes.html">themes</a></li>
+	<li><a href="/plugins.html">plugins</a></li>
+	<li><a href="/blog.html">blog</a></li>
+	<li><a href="/about.html">about</a></li>
+</ul>
+	</div>
+	<h1 id="title"><a href="#content"><b>∴</b> Admin Interface for ergo-cms</a></h1>
+</div>
+<div class="s post">
+	<div class="c">
+		<div id="content">
+
+
+<div class="post">
+  <h1><a href="/blog/admin.html">Admin Interface for ergo-cms</a></h1>
+	<p>There has been quite a lot of work going on behind the scenes to develop a web-based administration interface for Ergo-<span class="caps">CMS</span>. This is still ongoing, but I thought I little <strong>teaser</strong> about the solution would be nice. This is what the UI looks like today:</p>
+<p><img style="padding:0" align="center" class="shadow" src="/images/ergo-admin1.png" alt="" /></p>
+<p>As you can see, there&#8217;s quite a lot of potential in the project. You can track it online on <a href="https://github.com/ergo-cms/ergo-admin">github.com/ergo-cms/ergo-admin</a></p>
+<h2>Choice of <span class="caps">CSS</span> libary</h2>
+<p>One of the main things that cropped up is the lack of a good css library that coped with the basic framework required for an admin interface that <em>didn&#8217;t also involve massive lock-in</em>. That is, I started off using Bootstrap as the basis and was unhappy with the result, mainly because of the horrible <span class="caps">HTML</span> bloat that&#8217;s needed when dealing with Bootstrap in general. </p>
+<p>It&#8217;s a problem that I&#8217;ve been looking at for over 2 years now and several months back started a <span class="caps">CSS</span> library that was based on Yahoo&#8217;s <a href="https://purecss.io/">purecss</a>. It was a failure. It wasn&#8217;t responsive enough and had too many unknown quirks.</p>
+<p>This is the list of <span class="caps">CSS</span> libraries I looked at and discarded:</p>
+<ul>
+	<li><a href="https://getbootstrap.com">Bootstrap</a>. Bloated <span class="caps">HTML</span>. Hard to &#8216;recolor&#8217;. Requires jQuery.</li>
+	<li><a href="https://purecss.io/">PureCSS</a>. Somewhat bloated <span class="caps">HTML</span>, but <span class="caps">LOTS</span> of branding in the <span class="caps">HTML</span>. Hard to override.</li>
+	<li><a href="http://foundation.zurb.com/sites/docs/">Foundation</a>. Bloated <span class="caps">HTML</span>. Just didn&#8217;t like the styling and had lots of &#8216;what the?&#8217; moments.</li>
+	<li><a href="https://picnicss.com/">PicnicCSS</a>. Pretty awesome really. Seemed to miss a few too many features though.</li>
+	<li><strong>Anything</strong> <span class="caps">SASS</span>, fat, bloated, &#8216;just install this, then this, then run this&#8217;. Ugh. <span class="caps">CSS</span> Frameworks should provide&#8230; <span class="caps">CSS</span>.</li>
+</ul>
+<p>So, call me crazy, I reinvented the wheel. It&#8217;s called <strong>InvisCSS</strong> and it&#8217;s available on <a href="https://github.com/cmroanirgo/inviscss">github.com/cmroanirgo/inviscss</a>. It is a responsive mobile first approach, with the main requirement of clean <span class="caps">HTML</span>, as if you were manually styling the <span class="caps">CSS</span> yourself. Admittedly, this can lead to a little <span class="caps">CSS</span> bloat, but that&#8217;s far better than bloat on each and every page, <span class="caps">IMHO</span>. It has a script file, but makes no use of jQuery or company. Other features of <a href="https://github.com/cmroanirgo/inviscss">InvisCSS</a> are:</p>
+<ul>
+	<li>Clean <span class="caps">HTML</span></li>
+	<li>Easier to change colors and styles to suit your needs.</li>
+	<li>No requirements on external JS libraries.</li>
+	<li>Built with <span class="caps">LESS</span>, ships as <span class="caps">CSS</span>.</li>
+	<li>Themes, to get you started (also as easily overridable <span class="caps">LESS</span>) in min and normal sizings.</li>
+	<li>Flexbox layout.</li>
+	<li><span class="caps">IE10</span> and everything else.</li>
+</ul>
+<p>The flexbox layout is a modified version of <a href="http://flexboxgrid.com/">flexboxgrid</a> (so that it works more like Bootstrap), &amp; uses Bootstrap&#8217;s naming conventions, eg. <code>col-sm-10 col-md-8 col-lg-6</code> to give very powerful layouts. Unfortunately, this, more than most, is where the <span class="caps">CSS</span> bloat begins, but I feel that the benefits outweigh the need to be a <strong>minimal</strong> <span class="caps">CSS</span> library. At the moment, InvisCSS is about 40Kb zipped without trying too hard, but has plenty room for improvement, since there are still a lot of legacy browsers out there that don&#8217;t fully support the latest Flex specs. As this improves, the size will plummet, because most of the <span class="caps">CSS</span> is in providing <code>-webkit-</code> and <code>-ms-</code> wrappers (thanks to less-plugin-autoprefix). As such, browser support is pretty good with most of the browsers (including mobile), being amply supported.</p>
+	<div class="clear"></div>
+	<ul class="stats">
+		
+		
+	</ul>
+	<div class="social">Follow me on:&nbsp;&nbsp;&nbsp;
+		<a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a> 
+		
+		
+		
+		
+		
+		<a href="https://github.com/cmroanirgo"><i class="flaticon-github"></i></a>
+	</div>
+</div>
+<!--nextprev plugin-->
+<div style="text-align:right;margin-bottom:2em">
+
+
+	<a href="/blog/themes.html" class="button">Next &gt;&gt;</a>
+
+</div>
+
+
+<div id="disqus_thread"><a href="#" onclick="return disqus();" id="show_comments" class="button">Show Comments</a> </div>
+<script type="text/javascript">
+	var disqus_loaded = false;
+	var disqus_shortname = 'ergo-cms';
+	var disqus_identifier = 'blog/admin.html';
+	var disqus_url = 'https://ergo-cms.github.io/blog/admin.html';
+	function disqus() {
+		if (disqus_loaded) 
+			return false;
+		disqus_loaded = true;
+		
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		return false;
+	}
+</script>
+
+</div> <!--content-->
+<div id="sidebar">
+	<p><img id="author_img" src="/images/avatar-cmroanirgo-128.jpg" /></p>
+	<p><a href="https://github.com/cmroanirgo" id="author">craig</a></p>
+	<p><a href="https://github.com/cmroanirgo" id="author_nick">cmroanirgo</a></p>
+	<p>16 Mar 2017</p>
+
+		</div>
+	</div>
+</div>
+
+
+<div id="footer" class="s">
+	<div class="c">The official <a href="https://ergo-cms.github.io/">∴ ergo-cms</a> site</a> | Copyright &copy; ergo-cms ∴, 2017. <a id="rss" href="/rss.xml"><i class="flaticon-rss"></i></a></div>
+</div>
+
+</body>
+</html>
+
